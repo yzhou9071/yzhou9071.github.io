@@ -40,7 +40,8 @@ define([], function(){
 
 		$viewer.innerHTML = '<div id="viewer-box">\
 		<div class="viewer-box-l">\
-			<div class="viewer-box-wrap">'+aboutmeStr+friendsStr+tagStr+'</div>\
+			//<div class="viewer-box-wrap">'+aboutmeStr+friendsStr+tagStr+'</div>\
+			<div class="viewer-box-wrap">'+tagStr+'</div>\
 		</div>\
 		<div class="viewer-box-r"></div>\
 		</div>';

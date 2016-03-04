@@ -40,12 +40,12 @@ define([], function(){
 
 		$viewer.innerHTML = '<div id="viewer-box">\
 		<div class="viewer-box-l">\
-			//<div class="viewer-box-wrap">'+aboutmeStr+friendsStr+tagStr+'</div>\
 			<div class="viewer-box-wrap">'+tagStr+'</div>\
 		</div>\
 		<div class="viewer-box-r"></div>\
 		</div>';
 
+			//<div class="viewer-box-wrap">'+aboutmeStr+friendsStr+tagStr+'</div>\
 		//主要图片节点
 		document.getElementsByTagName("body")[0].appendChild($viewer);
 		var wrap = document.getElementById("viewer-box");

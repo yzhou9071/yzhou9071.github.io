@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Vim查找替换及相关正则表达式 | 冷饭博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+
+替换表达式:[range]s/from/to/[flags]
+其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim查找替换及相关正则表达式">
+<meta property="og:url" content="http://yoursite.com/2016/03/07/Vim查找替换及相关正则表达式/index.html">
+<meta property="og:site_name" content="冷饭博客">
+<meta property="og:description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+
+替换表达式:[range]s/from/to/[flags]
+其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
+<meta property="og:updated_time" content="2016-03-07T08:14:03.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vim查找替换及相关正则表达式">
+<meta name="twitter:description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+
+替换表达式:[range]s/from/to/[flags]
+其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <!--
+<div class="overlay"></div> 
+-->
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Keen Zhou</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								
+									<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+								
+					        
+								
+									<a class="mail" target="_blank" href="mailto:yzhou9071@gmail.com" title="mail">mail</a>
+								
+					        
+								
+									<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+								
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 10px;">cordova</a> <a href="/tags/后端相关/" style="font-size: 20px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 20px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme" style="color:white;">
+					
+					
+						冷饭<br>
+					
+						野生程序猿<br>
+					
+						www.yzhou9071.com<br>
+					
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Keen Zhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Keen Zhou</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/yzhou9071@gmail.com" title="mail">mail</a>
+			        
+						<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Vim查找替换及相关正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/07/Vim查找替换及相关正则表达式/" class="article-date">
+  	<time datetime="2016-03-07T08:10:48.000Z" itemprop="datePublished">2016-03-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vim查找替换及相关正则表达式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找替换/">查找替换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。</strong></p>
+</blockquote>
+<h4 id="替换表达式"><a href="#替换表达式" class="headerlink" title="替换表达式"></a><strong>替换表达式</strong></h4><pre><code>:[range]s/from/to/[flags]
+</code></pre><p>其中，<code>range</code>指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：</p>
+<a id="more"></a>
+<ul>
+<li><code>n1,n2</code>：表示在n1行到n2行之间搜索替换，包括n1、n2，如<code>：1,10s/from/to/</code>；</li>
+<li><code>n</code>：表示在第n行搜索替换，如<code>：10s/from/to/</code>；</li>
+<li><code>%</code>：表示在全文所有行中搜索替换，如<code>:%s/from/to/</code>；</li>
+<li><code>1,$</code>：同样表示在全文所有行中搜索替换；</li>
+</ul>
+<p><code>flags</code>表示附加参数，主要有四个选项：</p>
+<ul>
+<li><code>c</code>：表示每次替换前询问；</li>
+<li><code>e</code>：表示不显示错误信息；</li>
+<li><code>g</code>：表示全局搜索替换，如果没有该选项，则只替换每行第一个匹配到的字符串；</li>
+<li><code>i</code>：表示忽略大小写。</li>
+</ul>
+<p><em>注：flags的这些选项可以配合使用。</em></p>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><strong>正则表达式</strong></h4><p>正则表达式实际上就是规则的运用，我们首先需要了解一下相应个规则，也就是元字符：</p>
+<ul>
+<li><code>.</code>：表示匹配任意字符；</li>
+<li><code>[abc]</code>：表示匹配括号内的<em>任意一个</em>字符，也可以采用<code>-</code>表示范围，如<code>[a-z]</code>；</li>
+<li><code>[^abc]</code>：表示匹配除括号内的任意字符；</li>
+<li><code>\l</code>：作用同<code>[a-z]</code>；</li>
+<li><code>\L</code>：作用同<code>[^a-z]</code>；</li>
+<li><code>\u</code>：作用同<code>[A-Z]</code>;</li>
+<li><code>\U</code>：作用同<code>[^A-Z]</code>;</li>
+<li><code>\d</code>：表示匹配阿拉伯数字，作用同<code>[0-9]</code>;</li>
+<li><code>D</code>：表示匹配除阿拉伯数字以外的任意字符，作用同<code>[^0-9]</code>;</li>
+<li><code>\x</code>：表示匹配十六进制数字，作用同<code>[0-9A-Fa-f]</code>;</li>
+<li><code>\X</code>：表示匹配出十六进制数字以外的任意字符，作用同<code>[^0-9A-Fa-f]</code>;</li>
+<li><code>\w</code>：表示匹配单词字母，作用同<code>[0-9A-Za-z]</code>;</li>
+<li><code>\W</code>：表示匹配除但此字母以外的任意字符，作用同<code>[0-9A-Za-z]</code>;</li>
+<li><code>\t</code>：表示匹配<code>&lt;TAB&gt;</code>字符；</li>
+<li><code>\s</code>：表示匹配空白字符，作用同<code>[\t]</code>；</li>
+<li><code>\S</code>：表示匹配非空白字符，作用同<code>[^\t]</code>。</li>
+</ul>
+<p>以上元字符用来表示目标对象，那么我们还需要用来表示数量的元字符：</p>
+<ul>
+<li><code>*</code>：表示匹配任意个，包括0；</li>
+<li><code>\+</code>：表示匹配1-任意个；</li>
+<li><code>\?</code>：表示匹配0-1个；</li>
+<li><code>\{n,m}</code>：表示匹配n-m个；</li>
+<li><code>\{n}</code>：表示匹配n个；</li>
+<li><code>\{n,}</code>：表示匹配n-任意个；</li>
+<li><code>\{,m}</code>：表示匹配0-m个。</li>
+</ul>
+<p><strong>需要注意的是，有一些字符在非正则表达式使用时需要将其转义，主要有以下几个：</strong></p>
+<ul>
+<li><code>\*</code>：表示匹配<code>*</code>字符</li>
+<li><code>\.</code>：表示匹配<code>.</code>字符</li>
+<li><code>\/</code>：表示匹配<code>/</code>字符</li>
+<li><code>\</code>：表示匹配<code>\</code>字符</li>
+<li><code>\[</code>：表示匹配<code>[</code>字符</li>
+<li><code>\]</code>：表示匹配<code>]</code>字符</li>
+</ul>
+<p>正则表达式中，也可以以模板的形式创建替换变量：以<code>\(</code>和<code>\)</code>括起来的正则表达式就可以认为是一个模板，在之后的使用过程中可以<code>\1</code>和<code>\2</code>形式访问其中内容。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/05/Git搭建及常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git搭建及常用命令</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Vim查找替换及相关正则表达式" data-title="Vim查找替换及相关正则表达式" data-url="http://yoursite.com/2016/03/07/Vim查找替换及相关正则表达式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Keen Zhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

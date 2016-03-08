@@ -4,17 +4,30 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>冷饭博客</title>
+  <title>Apache与mod_wsgi部署Django(一) | 冷饭博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="野生程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="冷饭博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Django部署生产环境是一个纠结的问题，各个版本，各种方法，层出不穷，看过很多博客，感觉说的都多少有些出入，或者存在着偏差。本文是一篇官方文档的译文，水平有限，多多见谅。
+原文地址：How to use Django with Apache and mod_wsgi
+
+采用Apache与mod_wsgi部署Django到生产环境是一个尝试与测试的过程。
+mod_wsgi是Apache的一个模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache与mod_wsgi部署Django(一)">
+<meta property="og:url" content="http://yoursite.com/2016/03/08/Apache与mod-wsgi部署Django-一/index.html">
 <meta property="og:site_name" content="冷饭博客">
-<meta property="og:description" content="野生程序猿">
+<meta property="og:description" content="Django部署生产环境是一个纠结的问题，各个版本，各种方法，层出不穷，看过很多博客，感觉说的都多少有些出入，或者存在着偏差。本文是一篇官方文档的译文，水平有限，多多见谅。
+原文地址：How to use Django with Apache and mod_wsgi
+
+采用Apache与mod_wsgi部署Django到生产环境是一个尝试与测试的过程。
+mod_wsgi是Apache的一个模块">
+<meta property="og:updated_time" content="2016-03-08T09:01:24.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冷饭博客">
-<meta name="twitter:description" content="野生程序猿">
+<meta name="twitter:title" content="Apache与mod_wsgi部署Django(一)">
+<meta name="twitter:description" content="Django部署生产环境是一个纠结的问题，各个版本，各种方法，层出不穷，看过很多博客，感觉说的都多少有些出入，或者存在着偏差。本文是一篇官方文档的译文，水平有限，多多见谅。
+原文地址：How to use Django with Apache and mod_wsgi
+
+采用Apache与mod_wsgi部署Django到生产环境是一个尝试与测试的过程。
+mod_wsgi是Apache的一个模块">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -186,9 +199,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-Apache与mod-wsgi部署Django-一" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Apache与mod-wsgi部署Django-一" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/03/08/Apache与mod-wsgi部署Django-一/" class="article-date">
@@ -204,12 +215,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/08/Apache与mod-wsgi部署Django-一/">Apache与mod_wsgi部署Django(一)</a>
+    <h1 class="article-title" itemprop="name">
+      Apache与mod_wsgi部署Django(一)
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -248,20 +270,19 @@ WSGIPythonPath /path/to/mysite.com
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/07/Vim查找替换及相关正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vim查找替换及相关正则表达式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -270,268 +291,27 @@ WSGIPythonPath /path/to/mysite.com
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Apache与mod-wsgi部署Django-一" data-title="Apache与mod_wsgi部署Django(一)" data-url="http://yoursite.com/2016/03/08/Apache与mod-wsgi部署Django-一/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
-  
-    <article id="post-Vim查找替换及相关正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/07/Vim查找替换及相关正则表达式/" class="article-date">
-  	<time datetime="2016-03-07T08:10:48.000Z" itemprop="datePublished">2016-03-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/07/Vim查找替换及相关正则表达式/">Vim查找替换及相关正则表达式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。</strong></p>
-</blockquote>
-<h4 id="替换表达式"><a href="#替换表达式" class="headerlink" title="替换表达式"></a><strong>替换表达式</strong></h4><pre><code>:[range]s/from/to/[flags]
-</code></pre><p>其中，<code>range</code>指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找替换/">查找替换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/07/Vim查找替换及相关正则表达式/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Git搭建及常用命令" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/05/Git搭建及常用命令/" class="article-date">
-  	<time datetime="2016-03-05T02:44:50.000Z" itemprop="datePublished">2016-03-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/05/Git搭建及常用命令/">Git搭建及常用命令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>Git对于独立开发者来说，我认为更多的是为了代码安全，比如代码备份，比如代码回溯，作用地位并不是那么的明显；而对于团队来说，就显得至关重要了。协同开发是一个学生向职业程序员转变的一个重要标志，而Git又是其中的佼佼者。本文将介绍Git服务器的搭建、Git的常用命令以及两款可视化工具。</strong></p>
-</blockquote>
-<p>本文只做简单介绍，只讲述了最基础最常用的，需要进一步说明的可参照：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git教程</a>以及<a href="http://git-scm.com/doc">Git文档</a>。</p>
-<h3 id="Git服务器搭建"><a href="#Git服务器搭建" class="headerlink" title="Git服务器搭建"></a><strong>Git服务器搭建</strong></h3><p><strong>安装Git</strong></p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/05/Git搭建及常用命令/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-简明Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/04/简明Markdown语法/" class="article-date">
-  	<time datetime="2016-03-04T02:37:44.000Z" itemprop="datePublished">2016-03-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/04/简明Markdown语法/">简明Markdown语法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>Markdown本着易写易读的宗旨变得越来越流行，尤其是对广大码农来说，更是必不可少。希望在本文的介绍下，能在看完博客的同时就可以完成Markdown的大部分任务。</p>
-<p>详细教程可参考：<a href="http://wowubuntu.com/markdown/">Markdown语法说明</a></p>
-<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a><strong>符号</strong></h3><ul>
-<li><em>Markdown符号</em> ： *，-，+ 这三个符号的效果作用相同</li>
-<li><em>\</em> ： 转义字符，可用来转义Markdown中符号</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/04/简明Markdown语法/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-cordova图片上传" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/03/cordova图片上传/" class="article-date">
-  	<time datetime="2016-03-03T11:38:40.000Z" itemprop="datePublished">2016-03-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/03/cordova图片上传/">cordova图片上传</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>手机应用开发，难免会需要用到图片。本文主要介绍如何通过cordova（PhoneGap）调用摄像头及访问相册上传图片，并将图片上传至服务器。本文所有代码在cordova4.3.0测试成功。</p>
-</blockquote>
-<p><strong>本文完整代码示例可参照<a href="https://github.com/yzhou9071">Github</a>。</strong></p>
-<h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a><strong>功能需求</strong></h3><p>选择本地图片，也可以通过相机拍摄图片，然后上传至服务器，并在当前页面中显示出来。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova/">cordova</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片上传/">图片上传</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动开发/">移动开发</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/03/cordova图片上传/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
 
 </div>
       <footer id="footer">
@@ -556,8 +336,8 @@ WSGIPythonPath /path/to/mysite.com
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

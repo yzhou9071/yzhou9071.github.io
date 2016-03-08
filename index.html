@@ -68,11 +68,11 @@
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>Menu</li>
-						<li>Tags</li>
+						<li>菜单</li>
+						<li>标签</li>
 						
 						
-						<li>About</li>
+						<li>关于我</li>
 						
 					</ul>
 				</div>
@@ -216,35 +216,11 @@
       
         <blockquote>
 <p><strong>Django部署生产环境是一个纠结的问题，各个版本，各种方法，层出不穷，看过很多博客，感觉说的都多少有些出入，或者存在着偏差。本文是一篇官方文档的译文，水平有限，多多见谅。</strong></p>
-<p><strong>原文地址：<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/modwsgi/" target="_blank" rel="external">How to use Django with Apache and mod_wsgi</a></strong></p>
+<p><strong>原文地址：<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/modwsgi/">How to use Django with Apache and mod_wsgi</a></strong></p>
 </blockquote>
-<p>采用<a href="http://httpd.apache.org/" target="_blank" rel="external">Apache</a>与<a href="http://modwsgi.readthedocs.org/en/develop/" target="_blank" rel="external">mod_wsgi</a>部署Django到生产环境是一个尝试与测试的过程。</p>
-<p>mod_wsgi是Apache的一个模块，能服务于任何的[Python <a href="http://wsgi.readthedocs.org/en/latest/" target="_blank" rel="external">WSGI</a>应用程序，包括Django。Django能够在支持mod_wsgi的任何版本的Apache上工作运行。</p>
-<p><a href="http://modwsgi.readthedocs.org/en/develop/" target="_blank" rel="external">mod_wsgi官方文档</a>非常棒，它能为你提供所有的关于如何使用mod_wsgi的细节。你也许希望从<a href="http://modwsgi.readthedocs.org/en/develop/installation.html" target="_blank" rel="external">mod_wsgi安装配置</a>开始呢。</p>
-<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a><strong>基本配置</strong></h3><p>一旦完成mod_wsgi的安装与运行，就可以编辑你的Apache服务器的httpd.conf（<em>大部分博客这里都会写httpd.conf，很多人对这个就无从下手了。其实这个配置文件是在Apache 2.2版本之前的，貌似2.4以后都是放在sites-available文件夹下的，文件名可以自己命名。</em>）文件并添加如下内容。如果你采用的是2.4版本以前的Apache，那么就将<code>Require all granted</code>用<code>Allow from all</code>替换，并且在这行上面添加<code>Order deny,allow</code>（<em>这里值得注意，配置的时候可能没有确认自己的服务器版本就直接按照博客的来，很容易出问题</em>）。</p>
-<pre><code>WSGIScriptAlias / /path/to/mysite.com/mysite/wsgi.py
-WSGIPythonPath /path/to/mysite.com
-
-&lt;Directory /path/to/mysite.com/mysite&gt;
-    &lt;Files wsgi.py&gt;
-        Require all granted
-    &lt;/Files&gt;
-&lt;/Directory&gt;    
-</code></pre><p><em>WSGIScriptAlias</em>这一行第一个参数表示的是你想要提供应用的基本URL路径（<code>/</code>表示根路径），第二个参数表示的<code>WSGI文件</code>在你系统中的位置，通常在项目包中（本例中指<code>mysite</code>）。这就告诉Apache对于下面给出的URL的请求都采用定义在这个文件中的WSGI程序处理。</p>
-<p><strong>WSGIPythonPath</strong>这一行是保证你的项目包能够引入到Python路径中，换而言之，就是<code>import mysite</code>能够生效。</p>
-<p><strong><directory></directory></strong>这个标签仅仅确保Apache能够访问你的<code>wsgi.py</code>文件。</p>
-<p>接下来我们需要<code>wsgi.py</code>对应一个WSGI应用对象存在。Django 1.4的版本中<code>startproject</code>会为你创建一个；其他情况下，你就需要自己创建了。你可以通过阅读<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/" target="_blank" rel="external">WSGI文档</a>来了解你需要添加哪些基本内容以及你还能添加什么。</p>
-<p><strong>特别注意</strong></p>
-<p>如果你通过一个单一的mod_wsgi进程运行多个Django站点，所有的站点都会采用最早运行的那个的配置。因此，在wsgi.py文件中你就需要将：</p>
-<pre><code>os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;{{ project_name }}.settings&quot;)
-</code></pre><p>更改为：</p>
-<pre><code>os.environ[&quot;DJANGO_SETTINGS_MODULE&quot;] = &quot;{{ project_name }}.settings&quot;
-</code></pre><p>或者采用<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/modwsgi/#daemon-mode" target="_blank" rel="external">mod_wsgi守护进程模式</a>，确保每一个站点运行在自己的进程中。</p>
-<h3 id="使用虚拟环境"><a href="#使用虚拟环境" class="headerlink" title="使用虚拟环境"></a><strong>使用虚拟环境</strong></h3><p>如果你在一个虚拟环境中安装了项目的Python依赖，你需要将你的虚拟环境的<code>site-packages</code>目录加入到你的Python路径中。完成这一步，你要添加一个额外的路径到<code>WSGIPythonPath</code>中，如果你用的是UNIX-like系列的系统，那么采用<code>:</code>分隔；如果你的系统是Windows，那么采用<code>;</code>分隔。如果路径中的任意部分有空格字符，那么加入的字符串必须是引用的。</p>
-<pre><code>WSGIPythonPath /path/to/mysite.com:/path/to/your/venv/lib/python3.X/site-packages
-</code></pre><p>确保你的虚拟环境路径是正确的，并且将<code>3.X</code>用正确的Python版本代替（比如：python3.4）。</p>
-<p><strong>下一部分将介绍部署过程中的一些相关问题，未完待续…</strong></p>
-
+<p>采用<a href="http://httpd.apache.org/">Apache</a>与<a href="http://modwsgi.readthedocs.org/en/develop/">mod_wsgi</a>部署Django到生产环境是一个尝试与测试的过程。</p>
+<p>mod_wsgi是Apache的一个模块，能服务于任何的[Python <a href="http://wsgi.readthedocs.org/en/latest/">WSGI</a>应用程序，包括Django。Django能够在支持mod_wsgi的任何版本的Apache上工作运行。</p>
+<p><a href="http://modwsgi.readthedocs.org/en/develop/">mod_wsgi官方文档</a>非常棒，它能为你提供所有的关于如何使用mod_wsgi的细节。你也许希望从<a href="http://modwsgi.readthedocs.org/en/develop/installation.html">mod_wsgi安装配置</a>开始呢。</p>
       
     </div>
     
@@ -257,6 +233,10 @@ WSGIPythonPath /path/to/mysite.com
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/08/Apache与mod-wsgi部署Django-一/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

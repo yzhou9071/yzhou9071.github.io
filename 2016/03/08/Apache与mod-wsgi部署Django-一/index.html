@@ -20,7 +20,7 @@ mod_wsgi是Apache的一个模块">
 
 采用Apache与mod_wsgi部署Django到生产环境是一个尝试与测试的过程。
 mod_wsgi是Apache的一个模块">
-<meta property="og:updated_time" content="2016-03-08T09:01:24.589Z">
+<meta property="og:updated_time" content="2016-03-08T09:02:00.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache与mod_wsgi部署Django(一)">
 <meta name="twitter:description" content="Django部署生产环境是一个纠结的问题，各个版本，各种方法，层出不穷，看过很多博客，感觉说的都多少有些出入，或者存在着偏差。本文是一篇官方文档的译文，水平有限，多多见谅。
@@ -81,11 +81,11 @@ mod_wsgi是Apache的一个模块">
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>Menu</li>
-						<li>Tags</li>
+						<li>菜单</li>
+						<li>标签</li>
 						
 						
-						<li>About</li>
+						<li>关于我</li>
 						
 					</ul>
 				</div>
@@ -243,6 +243,7 @@ mod_wsgi是Apache的一个模块">
 <p>采用<a href="http://httpd.apache.org/" target="_blank" rel="external">Apache</a>与<a href="http://modwsgi.readthedocs.org/en/develop/" target="_blank" rel="external">mod_wsgi</a>部署Django到生产环境是一个尝试与测试的过程。</p>
 <p>mod_wsgi是Apache的一个模块，能服务于任何的[Python <a href="http://wsgi.readthedocs.org/en/latest/" target="_blank" rel="external">WSGI</a>应用程序，包括Django。Django能够在支持mod_wsgi的任何版本的Apache上工作运行。</p>
 <p><a href="http://modwsgi.readthedocs.org/en/develop/" target="_blank" rel="external">mod_wsgi官方文档</a>非常棒，它能为你提供所有的关于如何使用mod_wsgi的细节。你也许希望从<a href="http://modwsgi.readthedocs.org/en/develop/installation.html" target="_blank" rel="external">mod_wsgi安装配置</a>开始呢。</p>
+<a id="more"></a>
 <h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a><strong>基本配置</strong></h3><p>一旦完成mod_wsgi的安装与运行，就可以编辑你的Apache服务器的httpd.conf（<em>大部分博客这里都会写httpd.conf，很多人对这个就无从下手了。其实这个配置文件是在Apache 2.2版本之前的，貌似2.4以后都是放在sites-available文件夹下的，文件名可以自己命名。</em>）文件并添加如下内容。如果你采用的是2.4版本以前的Apache，那么就将<code>Require all granted</code>用<code>Allow from all</code>替换，并且在这行上面添加<code>Order deny,allow</code>（<em>这里值得注意，配置的时候可能没有确认自己的服务器版本就直接按照博客的来，很容易出问题</em>）。</p>
 <pre><code>WSGIScriptAlias / /path/to/mysite.com/mysite/wsgi.py
 WSGIPythonPath /path/to/mysite.com

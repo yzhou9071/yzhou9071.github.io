@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 10px;">cordova</a> <a href="/tags/后端相关/" style="font-size: 20px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 15px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 10px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
+						<a href="/tags/Django/" style="font-size: 15px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 10px;">cordova</a> <a href="/tags/后端相关/" style="font-size: 20px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 15px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,73 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Apache与mod-wsgi部署Django（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/09/Apache与mod-wsgi部署Django（二）/" class="article-date">
+  	<time datetime="2016-03-09T08:50:50.000Z" itemprop="datePublished">2016-03-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/09/Apache与mod-wsgi部署Django（二）/">Apache与mod_wsgi部署Django（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>本文继上篇博客继续翻译Django文档，并且会穿插一些自己在配置部署过程中遇到的问题及解决方案。</strong></p>
+<p><strong>原文地址：<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/modwsgi/">How to use Django with Apache and mod_wsgi</a></strong></p>
+</blockquote>
+<h4 id="采用mod-wsgi守护进程模式"><a href="#采用mod-wsgi守护进程模式" class="headerlink" title="采用mod_wsgi守护进程模式"></a><strong>采用mod_wsgi守护进程模式</strong></h4><p>本文推荐采用这种模式来运行mod_wsgi。你需要添加可用的<code>WSGIDaemonProcess</code>和<code>WSGIProcessGroup</code>目录，以便创建必要的进程组，并是的Django实例在其上运行。如果你采用这种模式，那么上面的配置需要进一步的修改：不能再采用<code>WSGIPythonPath</code>了，你应该在<code>WSGIPDaemonPeocess</code>中使用<code>python-path</code>参数，比如：</p>
+<pre><code>WSGIDaemonProcess example.com python-path=/path/to/mysite.com:/path/to/venv/lib/python2.7/site-packages
+WSGIProcessGroup example.com
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/09/Apache与mod-wsgi部署Django（二）/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Apache与mod-wsgi部署Django-一" class="article article-type-post" itemscope itemprop="blogPost">
   

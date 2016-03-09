@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Apache与mod_wsgi部署Django（二） | 冷饭博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文继上篇博客继续翻译Django文档，并且会穿插一些自己在配置部署过程中遇到的问题及解决方案。
+原文地址：How to use Django with Apache and mod_wsgi
+
+采用mod_wsgi守护进程模式本文推荐采用这种模式来运行mod_wsgi。你需要添加可用的WSGIDaemonProcess和WSGIProcessGroup目录，以便创建必要的进程组，并是的Djan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache与mod_wsgi部署Django（二）">
+<meta property="og:url" content="http://yoursite.com/2016/03/09/Apache与mod-wsgi部署Django（二）/index.html">
+<meta property="og:site_name" content="冷饭博客">
+<meta property="og:description" content="本文继上篇博客继续翻译Django文档，并且会穿插一些自己在配置部署过程中遇到的问题及解决方案。
+原文地址：How to use Django with Apache and mod_wsgi
+
+采用mod_wsgi守护进程模式本文推荐采用这种模式来运行mod_wsgi。你需要添加可用的WSGIDaemonProcess和WSGIProcessGroup目录，以便创建必要的进程组，并是的Djan">
+<meta property="og:updated_time" content="2016-03-09T08:54:54.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Apache与mod_wsgi部署Django（二）">
+<meta name="twitter:description" content="本文继上篇博客继续翻译Django文档，并且会穿插一些自己在配置部署过程中遇到的问题及解决方案。
+原文地址：How to use Django with Apache and mod_wsgi
+
+采用mod_wsgi守护进程模式本文推荐采用这种模式来运行mod_wsgi。你需要添加可用的WSGIDaemonProcess和WSGIProcessGroup目录，以便创建必要的进程组，并是的Djan">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <!--
+<div class="overlay"></div> 
+-->
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Keen Zhou</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								
+									<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+								
+					        
+								
+									<a class="mail" target="_blank" href="mailto:yzhou9071@gmail.com" title="mail">mail</a>
+								
+					        
+								
+									<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+								
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Django/" style="font-size: 15px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 10px;">cordova</a> <a href="/tags/后端相关/" style="font-size: 20px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 15px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme" style="color:white;">
+					
+					
+						冷饭<br>
+					
+						野生程序猿<br>
+					
+						www.yzhou9071.com<br>
+					
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Keen Zhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Keen Zhou</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/yzhou9071@gmail.com" title="mail">mail</a>
+			        
+						<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Apache与mod-wsgi部署Django（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/09/Apache与mod-wsgi部署Django（二）/" class="article-date">
+  	<time datetime="2016-03-09T08:50:50.000Z" itemprop="datePublished">2016-03-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Apache与mod_wsgi部署Django（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>本文继上篇博客继续翻译Django文档，并且会穿插一些自己在配置部署过程中遇到的问题及解决方案。</strong></p>
+<p><strong>原文地址：<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/modwsgi/" target="_blank" rel="external">How to use Django with Apache and mod_wsgi</a></strong></p>
+</blockquote>
+<h4 id="采用mod-wsgi守护进程模式"><a href="#采用mod-wsgi守护进程模式" class="headerlink" title="采用mod_wsgi守护进程模式"></a><strong>采用mod_wsgi守护进程模式</strong></h4><p>本文推荐采用这种模式来运行mod_wsgi。你需要添加可用的<code>WSGIDaemonProcess</code>和<code>WSGIProcessGroup</code>目录，以便创建必要的进程组，并是的Django实例在其上运行。如果你采用这种模式，那么上面的配置需要进一步的修改：不能再采用<code>WSGIPythonPath</code>了，你应该在<code>WSGIPDaemonPeocess</code>中使用<code>python-path</code>参数，比如：</p>
+<pre><code>WSGIDaemonProcess example.com python-path=/path/to/mysite.com:/path/to/venv/lib/python2.7/site-packages
+WSGIProcessGroup example.com
+</code></pre><a id="more"></a>
+<p>如果你希望你的项目运行在一个子目录上（本例子中是<a href="http://example.com/mysite），你可以在配置中添加`WSGIScriptAlias`标签：" target="_blank" rel="external">http://example.com/mysite），你可以在配置中添加`WSGIScriptAlias`标签：</a></p>
+<pre><code>WSGIScriptAlias /mysite /path/to/mysite.com/mysite/wsgi.py process-group=example.com
+</code></pre><p>你可以通过查看mod_wsgi的官方文档来了解设置<a href="https://code.google.com/p/modwsgi/wiki/QuickConfigurationGuide#Delegation_To_Daemon_Process" target="_blank" rel="external">守护进程模式的细节</a>。</p>
+<h4 id="文件服务"><a href="#文件服务" class="headerlink" title="文件服务"></a><strong>文件服务</strong></h4><p>Django本身是不提供文件服务的，它把这项任务委托给了你所选择的Web服务器。</p>
+<p>本文建议采用一个独立的Web服务器来提供此类服务，此处的独立是指不同时运行Django的服务器。为此我们提供了几个比较好的选择：</p>
+<ul>
+<li><a href="http://wiki.nginx.org/Main" target="_blank" rel="external">Nginx</a></li>
+<li><a href="http://httpd.apache.org/" target="_blank" rel="external">Apache精简版</a></li>
+</ul>
+<p>然而，如果你别无选择只能用同一个运行Django的Apache的虚拟主机来提供此类服务，你可以设置Apache为此提供一些urls，以及mod_wsgi为Django提供的接口。</p>
+<p>下面是一个例子，尤其明确的指出了<code>robots.txt</code>，<code>favicon.icon</code>，以及在<code>/static/</code>和<code>/media/</code>路径下的所有文件。其他的则由mod_wsgi提供：</p>
+<pre><code>Alias /robots.txt /path/to/mysite.com/static/robots.txt
+Alias /favicon.ico /path/to/mysite.com/static/favicon.ico
+
+Alias /media/ /path/to/mysite.com/media/
+Alias /static/ /path/to/mysite.com/static/
+
+&lt;Directory /path/to/mysite.com/static&gt;
+    Require all granted
+&lt;/Directory&gt;
+
+&lt;Directory /path/to/mysite.com/media&gt;
+    Require all granted
+&lt;/Directory&gt;
+
+WSGIScriptAlias / /path/to/mysite.com/mysite/wsgi.py
+
+&lt;Directory /path/to/mysite.com/mysite&gt;
+    &lt;Files wsgi.py&gt;
+        Require all granted
+    &lt;/Files&gt;
+&lt;/Directory&gt;
+</code></pre><p>需要再次强调的是，如果你采用的是Apache 2.4以前的版本，那么你需要将<code>Require all granted</code>用<code>Allow from all</code>替换，并且在这一行上面添加<code>Order deny,allow</code>。</p>
+<h4 id="admin文件服务"><a href="#admin文件服务" class="headerlink" title="admin文件服务"></a><strong>admin文件服务</strong></h4><p>当<a href="https://docs.djangoproject.com/en/1.8/ref/contrib/staticfiles/#module-django.contrib.staticfiles" target="_blank" rel="external">django.contrib.staticfiles</a>在<a href="https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-INSTALLED_APPS" target="_blank" rel="external">INSTALLED_APP</a>中时,Django开发服务器将admin的静态文件引入（当然也包括其他的注册应用）。然而，在部署到其他的服务器上时，就不具备这一特性了。因此，你不得不自己来重新配置你所采用的服务器，从而提供admin的文件服务。</p>
+<p>这些文件分布在Django的<code>django/contrib/admin/static/admin</code>目录下。</p>
+<p>我们<strong>强烈建议</strong>采用<a href="https://docs.djangoproject.com/en/1.8/ref/contrib/staticfiles/#module-django.contrib.staticfiles" target="_blank" rel="external">django.contrib.staticfiles</a>来提交这些文件（在上面的部分也提到了不同的服务器问题；这种方法换句话讲就是采用<code>collectstatic</code>将静态文件收集到<code>STATIC_ROOT</code>目录下，然后在Web服务器中配置<code>STATIC_ROOT</code>），但同样我们也提供其他三种方法：</p>
+<ol>
+<li>在根目录下创建一个软链接指向这些静态文件（这种方法可能需要在Apache服务器中配置<code>FollowSymlinks</code>）。</li>
+<li>采用一个<code>Alias</code>目录，如上面提到了，将一个别名url（比如：<a href="https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-STATIC_URL" target="_blank" rel="external">STATIC_URL</a>+<code>admin/</code>）指向到静态文件实际所在的位置。</li>
+<li>将静态文件直接拷贝到你的工程目录中。</li>
+</ol>
+<p>我实际在配置过程中，先是直接指定了一个<code>STATIC_ROOT</code>，采用<code>collectstatic</code>收集，不过坏处是破坏了我原本的一些文件布局，不影响使用，但与自己的习惯不同；后来就直接将静态文件直接拷贝到我指定的位置了，也就是上面说的第三种方法。</p>
+<h4 id="Apache验证Django用户数据库"><a href="#Apache验证Django用户数据库" class="headerlink" title="Apache验证Django用户数据库"></a><strong>Apache验证Django用户数据库</strong></h4><p>Django提供了一种机制：允许Apache直接通过Django验证后台来验证用户。详情可以参照<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/apache-auth/" target="_blank" rel="external">mod_wsgi验证文档</a>。</p>
+<h4 id="字符编码错误"><a href="#字符编码错误" class="headerlink" title="字符编码错误"></a><strong>字符编码错误</strong></h4><p>如果采用了Django国际化的一些特性（详情参见<a href="https://docs.djangoproject.com/en/1.8/topics/i18n/" target="_blank" rel="external">本地化与国际化</a>），并且打算允许用户上传文件，必须确保用于启动Apache的环境接受非ASCII文件名。环境没有正确的配置，那么当调用函数访问到这些文件时，就会触发字符编码错误。</p>
+<p>为避免这些问题，那么就在配置环境时就应该包含如下类似的配置：</p>
+<pre><code>export LANG=&apos;en_US.UTF-8&apos;
+export LC_ALL=&apos;en_US.UTF-8&apos;
+</code></pre><p>参考文档，针对不同系统为这些配置选择不同的语法及位置；在UNIX平台下，<code>/etc/apache2/envvars</code>是一个通用的路径。每一次的配置生效都需要重新启动Apache。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/08/Apache与mod-wsgi部署Django-一/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Apache与mod_wsgi部署Django(一)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Apache与mod-wsgi部署Django（二）" data-title="Apache与mod_wsgi部署Django（二）" data-url="http://yoursite.com/2016/03/09/Apache与mod-wsgi部署Django（二）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Keen Zhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

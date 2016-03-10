@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Storm单机安装及配置 | 冷饭博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。
+本文的系统环境为Ubuntu1404，Python版本为2.7.6。
+
+Storm安装
+安装必要的组件
+$ sudo apt-get install uuid-dev libtool make automake
+ 本文在安装过程中遇到了libsodium依赖问题，这里提供解决方法：githu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storm单机安装及配置">
+<meta property="og:url" content="http://yoursite.com/2016/03/10/Storm单机安装及配置/index.html">
+<meta property="og:site_name" content="冷饭博客">
+<meta property="og:description" content="本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。
+本文的系统环境为Ubuntu1404，Python版本为2.7.6。
+
+Storm安装
+安装必要的组件
+$ sudo apt-get install uuid-dev libtool make automake
+ 本文在安装过程中遇到了libsodium依赖问题，这里提供解决方法：githu">
+<meta property="og:updated_time" content="2016-03-10T13:02:58.962Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storm单机安装及配置">
+<meta name="twitter:description" content="本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。
+本文的系统环境为Ubuntu1404，Python版本为2.7.6。
+
+Storm安装
+安装必要的组件
+$ sudo apt-get install uuid-dev libtool make automake
+ 本文在安装过程中遇到了libsodium依赖问题，这里提供解决方法：githu">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <!--
+<div class="overlay"></div> 
+-->
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Keen Zhou</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								
+									<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+								
+					        
+								
+									<a class="mail" target="_blank" href="mailto:yzhou9071@gmail.com" title="mail">mail</a>
+								
+					        
+								
+									<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+								
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Django/" style="font-size: 13.33px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 10px;">cordova</a> <a href="/tags/后端相关/" style="font-size: 20px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 13.33px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 16.67px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme" style="color:white;">
+					
+					
+						冷饭<br>
+					
+						野生程序猿<br>
+					
+						www.yzhou9071.com<br>
+					
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Keen Zhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Keen Zhou</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/yzhou9071@gmail.com" title="mail">mail</a>
+			        
+						<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Storm单机安装及配置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/10/Storm单机安装及配置/" class="article-date">
+  	<time datetime="2016-03-10T13:00:57.000Z" itemprop="datePublished">2016-03-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Storm单机安装及配置
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Storm/">Storm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。</strong></p>
+<p><strong>本文的系统环境为Ubuntu1404，Python版本为2.7.6。</strong></p>
+</blockquote>
+<h3 id="Storm安装"><a href="#Storm安装" class="headerlink" title="Storm安装"></a><strong>Storm安装</strong></h3><ol>
+<li><p><strong>安装必要的组件</strong></p>
+<pre><code>$ sudo apt-get install uuid-dev libtool make automake
+</code></pre><p> 本文在安装过程中遇到了libsodium依赖问题，这里提供解决方法：github上提供了libsodium的<a href="https://github.com/jedisct1/libsodium" target="_blank" rel="external">下载</a>，clone后可直接编译安装。</p>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p><strong>安装zeromq</strong></p>
+<p> 下载<a href="http://download.zeromq.org/zeromq-4.1.3.zip" target="_blank" rel="external">zeromq</a>，编译安装：</p>
+<pre><code>$ ./autogen.sh
+ $ ./configure
+ $ make
+ $ sudo make install
+ $ sudo ldconfig (更新LD_LIBRARY_PATH)
+</code></pre></li>
+<li><p><strong>安装jzmq</strong></p>
+<p> 下载<a href="http://download.zeromq.org/zeromq-4.1.3.zip" target="_blank" rel="external">jzmq</a>，编译安装。</p>
+<pre><code>$ ./autogen.sh
+$ ./configure
+$ make
+$ sudo make install
+</code></pre></li>
+<li><p><strong>安装部署zookeeper</strong></p>
+<p> <em>安装</em></p>
+<p> 下载<a href="http://www.cnblogs.com/linjiqin/archive/2013/03/16/2962597.html" target="_blank" rel="external">zookeeper</a>，解压即可。</p>
+<p> <em>部署</em></p>
+<p> 添加环境变量</p>
+<pre><code>export ZOOKEEPER_HOME=&quot;/your path/zookeeper&quot;
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+</code></pre><p> <em>配置文件</em></p>
+<pre><code>$ cp /your path/conf/zoo_example.cfg /your path/conf/zoo.cfg
+</code></pre></li>
+<li><p><strong>安装部署Storm</strong></p>
+<p> <em>安装</em></p>
+<p> 下载<a href="https://github.com/apache/storm" target="_blank" rel="external">Storm</a>，解压即可。</p>
+<p> <em>部署</em></p>
+<p> 将解压的文件夹移至<code>/usr/local</code>下，并做软链接，如下：</p>
+<pre><code>$ mv apache-storm-0.9.5 /usr/local/
+$ ln -s /usr/local/apache-storm-0.9.5 /usr/local/storm
+</code></pre><p>  <em>添加环境变量</em></p>
+<pre><code>export STORM_HOME=&quot;/usr/local/apache-storm-0.9.5&quot;
+export PATH=$PATH:$STORM_HOME/bin
+</code></pre></li>
+</ol>
+<h3 id="Storm本地模式测试"><a href="#Storm本地模式测试" class="headerlink" title="Storm本地模式测试"></a><strong>Storm本地模式测试</strong></h3><ol>
+<li><p><strong>启动Storm</strong></p>
+<pre><code>/your path/zookeeper/bin/zkServer.sh start
+/usr/local/storm/bin/storm nimbus &amp;
+/usr/local/storm/bin/storm supervisor &amp;
+/usr/local/storm/bin/storm ui &amp;
+</code></pre><p> 如果添加过环境变量，就可以直接使用。我们通常用<code>jps</code>命令来查看进程状态，在没有运行任务时，必须应该看到五个进程（core、nimbus、supervisor、QuorumPeerMain、Jps）；否则，Storm就没有正确启动。运行期间，可以通过<code>http://127.0.0.1:8080</code>进入Storm UI，查看相关信息。</p>
+</li>
+<li><p><strong>WordCount测试</strong></p>
+<ul>
+<li><p>下载<a href="https://github.com/apache/storm/tree/master/examples/storm-starter" target="_blank" rel="external">storm-starter</a>：storm-starter是apache提供给初学者学习的一个例子。</p>
+</li>
+<li><p>下载相关软件包：<a href="http://commons.apache.org/proper/commons-collections/download_collections.cgi" target="_blank" rel="external">commons-collections</a>，<a href="http://cn.jarfire.org/twitter4j.html" target="_blank" rel="external">twitter4j</a>。</p>
+</li>
+<li>启动eclipse，新建<code>Java Project</code>工程，工程名任意，此处定为testWordCount。</li>
+<li><p>右击testWordCount，选择<code>import-&gt;File System</code>，选择<code>storm-starter-&gt;src-&gt;jvm-&gt;storm</code>文件夹。将storm文件夹导入后，将其拖入到src文件夹下。同样的方式将<code>storm-starter-&gt;multilang</code>导入，形成如图所示结构：</p>
+</li>
+<li><p>此时的项目由于缺少必要的依赖项目，存在很多错误。右击项目，选择<code>Properties-&gt;Java Build Path</code>，在<code>Libraries</code>选项卡选择<code>Add External JARs</code>，如图所示：</p>
+</li>
+<li><p>将<code>storm-0.9.5/lib</code>目录下的所有jar包添加到项目中，同时，将刚刚下载的<code>commons-collections</code>、<code>twitter4j</code>等jar包添加到项目中。</p>
+</li>
+<li><p>将<code>PrintSampleStream.java</code>和<code>TwitterSampleSpout.java</code>中的注释取消，或者直接删除。</p>
+</li>
+<li><p>将项目导出，选择<code>JAR File</code>，如图所示：</p>
+</li>
+<li><p>导出页面勾选如下图所示：</p>
+</li>
+<li><p>此时我们就得到了一个<code>WordCount.jar</code>，将其拷贝到<code>/usr/local/apache-storm-0.9.5</code>目录下，在终端中输入：</p>
+<pre><code>bin/storm jar WordCount.jar storm.starter.WordCountTopology wordcount
+</code></pre><p>  这里需要注意的是，命令是在<code>WordCount.jar</code>当前路径下进行的；<code>storm.starter.WordCountTopology</code>是需要提交的topology在src下的路径；<code>wordcount</code>是提交的topology名称。名称执行完后，就可以通过Storm UI访问了，如图所示：</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>至此，Storm的安装配置及测试就算完成，接下来就可以进行进一步的开发了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/09/Apache与mod-wsgi部署Django（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Apache与mod_wsgi部署Django（二）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Storm单机安装及配置" data-title="Storm单机安装及配置" data-url="http://yoursite.com/2016/03/10/Storm单机安装及配置/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Keen Zhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

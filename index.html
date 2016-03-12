@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 13.33px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 13.33px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 10px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 10px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 20px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 13.33px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 16.67px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
+						<a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 12.5px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 12.5px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 17.5px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 12.5px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 12.5px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,71 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-jQuery-Mobile动态刷新" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/12/jQuery-Mobile动态刷新/" class="article-date">
+  	<time datetime="2016-03-12T08:50:02.000Z" itemprop="datePublished">2016-03-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/12/jQuery-Mobile动态刷新/">jQuery Mobile动态刷新</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>很多情况下，前端的页面样式都是动态生成的。在采用jQuery Mobile的时候，我们经常会发现，动态生成的样式很丑，甚至根本不显示。这是由于jQuery Mobile没有对其进行渲染。这种情况下就需要对动态生成的元素进行刷新。本文介绍了几种主要的控件刷新方法。</strong></p>
+</blockquote>
+<p>这里用<code>strAppend</code>表示需要动态添加的内容，用<code>jqmID</code>表示控件ID。</p>
+<p><strong>Listview</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#jqmID&quot;).append(strAppend);</span><br><span class="line">$(&quot;#jqmID&quot;).listview(&apos;refresh&apos;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery-Mobile/">jQuery Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端相关/">前端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动开发/">移动开发</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/12/jQuery-Mobile动态刷新/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-PhoneGap-Jquery-Mobile白屏问题" class="article article-type-post" itemscope itemprop="blogPost">
   

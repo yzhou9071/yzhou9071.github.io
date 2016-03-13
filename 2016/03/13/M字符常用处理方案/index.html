@@ -4,17 +4,36 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: Markdown | 冷饭博客</title>
+  <title>^M字符常用处理方案 | 冷饭博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="野生程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="冷饭博客">
-<meta property="og:url" content="http://yoursite.com/tags/Markdown/index.html">
+  <meta name="description" content="通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为\r\n，而Linux下为\n。为此，本文提出几个^M字符常用处理方案。
+
+vi替换
+使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如
+:%s/^M//g
+这里是将^M字符删除（用空字符替换），也可以将其替换为回车：
+:%s/^M/\r/g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="^M字符常用处理方案">
+<meta property="og:url" content="http://yoursite.com/2016/03/13/M字符常用处理方案/index.html">
 <meta property="og:site_name" content="冷饭博客">
-<meta property="og:description" content="野生程序猿">
+<meta property="og:description" content="通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为\r\n，而Linux下为\n。为此，本文提出几个^M字符常用处理方案。
+
+vi替换
+使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如
+:%s/^M//g
+这里是将^M字符删除（用空字符替换），也可以将其替换为回车：
+:%s/^M/\r/g">
+<meta property="og:updated_time" content="2016-03-13T08:13:41.652Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冷饭博客">
-<meta name="twitter:description" content="野生程序猿">
+<meta name="twitter:title" content="^M字符常用处理方案">
+<meta name="twitter:description" content="通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为\r\n，而Linux下为\n。为此，本文提出几个^M字符常用处理方案。
+
+vi替换
+使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如
+:%s/^M//g
+这里是将^M字符删除（用空字符替换），也可以将其替换为回车：
+:%s/^M/\r/g">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -186,53 +205,110 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-M字符常用处理方案" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/04/简明Markdown语法/" class="archive-article-date">
-  	<time datetime="2016-03-04T02:37:44.000Z" itemprop="datePublished">Mar 4</time>
+    <div class="article-meta">
+      <a href="/2016/03/13/M字符常用处理方案/" class="article-date">
+  	<time datetime="2016-03-13T08:11:33.000Z" itemprop="datePublished">2016-03-13</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/04/简明Markdown语法/">简明Markdown语法</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ^M字符常用处理方案
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符处理/">字符处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找替换/">查找替换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为<code>\r\n</code>，而Linux下为<code>\n</code>。为此，本文提出几个^M字符常用处理方案。</strong></p>
+</blockquote>
+<p><strong>vi替换</strong></p>
+<p>使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如</p>
+<pre><code>:%s/^M//g
+</code></pre><p>这里是将^M字符删除（用空字符替换），也可以将其替换为回车：</p>
+<pre><code>:%s/^M/\r/g
+</code></pre><a id="more"></a>
+<p><em>注：</em>这里的^M字符并不是由^字符和M字符组成的，也不能够采用复制的方法。需要同时按住<code>Ctrl+V+M</code>，才能够打出该字符。<br>这种方法的缺陷就是一次只能够处理一个文件，如果是大量的文件就比较麻烦了。为此推荐采用以下两种方法。</p>
+<p><strong>sed替换</strong></p>
+<pre><code>#sed -e &apos;s/^M//g&apos; filename
+</code></pre><p>该命令是将文件名为filename的文件中^M字符替换为空字符。这里的filename文件可以是多个，也可以采用通配符，比如：</p>
+<pre><code>#sed -e &apos;s/^M//g&apos; *txt
+</code></pre><p>该命令就是将当前文件夹下所有的txt后缀文件中^M字符替换为空字符。采用这种方式可以实现多个文件的同时转换。</p>
+<p><strong>dos2unix命令替换</strong></p>
+<pre><code>#dos2unix file1 file2 file3
+</code></pre><p>将多个文件转换。上述命令是在原有文件基础上改的，如果需要保存原有文件格式，那么就需要添加相应属性，比如：</p>
+<pre><code>#dos2unix -n sourceFile desFile
+</code></pre><p>上述命令是将sourceFile转换为desFile，sourceFile格式不变，desFile为目标格式文件。</p>
+<pre><code>#dos2unix -k filename
+</code></pre><p><code>-k</code>参数不改变原有文件时间戳。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/12/jQuery-Mobile动态刷新/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery Mobile动态刷新</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="M字符常用处理方案" data-title="^M字符常用处理方案" data-url="http://yoursite.com/2016/03/13/M字符常用处理方案/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
 
 
 </div>
@@ -259,9 +335,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}

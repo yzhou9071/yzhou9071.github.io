@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 12.5px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 12.5px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 17.5px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/常用命令/" style="font-size: 12.5px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 10px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 12.5px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
+						<a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 12.5px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 12.5px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 17.5px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 12.5px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 12.5px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 12.5px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 12.5px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,74 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-M字符常用处理方案" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/13/M字符常用处理方案/" class="article-date">
+  	<time datetime="2016-03-13T08:11:33.000Z" itemprop="datePublished">2016-03-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/M字符常用处理方案/">^M字符常用处理方案</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为<code>\r\n</code>，而Linux下为<code>\n</code>。为此，本文提出几个^M字符常用处理方案。</strong></p>
+</blockquote>
+<p><strong>vi替换</strong></p>
+<p>使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如</p>
+<pre><code>:%s/^M//g
+</code></pre><p>这里是将^M字符删除（用空字符替换），也可以将其替换为回车：</p>
+<pre><code>:%s/^M/\r/g
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符处理/">字符处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找替换/">查找替换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/13/M字符常用处理方案/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-jQuery-Mobile动态刷新" class="article article-type-post" itemscope itemprop="blogPost">
   

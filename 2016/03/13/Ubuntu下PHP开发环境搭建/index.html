@@ -4,27 +4,33 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Vim查找替换及相关正则表达式 | 冷饭博客</title>
+  <title>Ubuntu下PHP开发环境搭建 | 冷饭博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+  <meta name="description" content="每次搭建新的服务器的时候，总会涉及到PHP的开发环境（LAMP），每一次也总会或多或少因为某个组件没有安装导致运行测试失败。这里讲介绍一下Ubuntu下PHP开发环境搭建，以作备忘。
 
-替换表达式:[range]s/from/to/[flags]
-其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
+Apache安装
+首先通过apt-get安装apache：
+1#sudo apt-get install apache2
+安装成功后，在浏览器中输入127.0.0.1测试一下是否运行，如果现实It works则表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vim查找替换及相关正则表达式">
-<meta property="og:url" content="http://yoursite.com/2016/03/07/Vim查找替换及相关正则表达式/index.html">
+<meta property="og:title" content="Ubuntu下PHP开发环境搭建">
+<meta property="og:url" content="http://yoursite.com/2016/03/13/Ubuntu下PHP开发环境搭建/index.html">
 <meta property="og:site_name" content="冷饭博客">
-<meta property="og:description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+<meta property="og:description" content="每次搭建新的服务器的时候，总会涉及到PHP的开发环境（LAMP），每一次也总会或多或少因为某个组件没有安装导致运行测试失败。这里讲介绍一下Ubuntu下PHP开发环境搭建，以作备忘。
 
-替换表达式:[range]s/from/to/[flags]
-其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
-<meta property="og:updated_time" content="2016-03-07T08:14:03.183Z">
+Apache安装
+首先通过apt-get安装apache：
+1#sudo apt-get install apache2
+安装成功后，在浏览器中输入127.0.0.1测试一下是否运行，如果现实It works则表">
+<meta property="og:updated_time" content="2016-03-13T08:18:32.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vim查找替换及相关正则表达式">
-<meta name="twitter:description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+<meta name="twitter:title" content="Ubuntu下PHP开发环境搭建">
+<meta name="twitter:description" content="每次搭建新的服务器的时候，总会涉及到PHP的开发环境（LAMP），每一次也总会或多或少因为某个组件没有安装导致运行测试失败。这里讲介绍一下Ubuntu下PHP开发环境搭建，以作备忘。
 
-替换表达式:[range]s/from/to/[flags]
-其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
+Apache安装
+首先通过apt-get安装apache：
+1#sudo apt-get install apache2
+安装成功后，在浏览器中输入127.0.0.1测试一下是否运行，如果现实It works则表">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -196,11 +202,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Vim查找替换及相关正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Ubuntu下PHP开发环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/07/Vim查找替换及相关正则表达式/" class="article-date">
-  	<time datetime="2016-03-07T08:10:48.000Z" itemprop="datePublished">2016-03-07</time>
+      <a href="/2016/03/13/Ubuntu下PHP开发环境搭建/" class="article-date">
+  	<time datetime="2016-03-13T08:16:29.000Z" itemprop="datePublished">2016-03-13</time>
 </a>
     </div>
   
@@ -213,7 +219,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vim查找替换及相关正则表达式
+      Ubuntu下PHP开发环境搭建
     </h1>
   
 
@@ -222,7 +228,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找替换/">查找替换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
 	</div>
 
         
@@ -234,64 +240,32 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p><strong>最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。</strong></p>
+<p><strong>每次搭建新的服务器的时候，总会涉及到PHP的开发环境（LAMP），每一次也总会或多或少因为某个组件没有安装导致运行测试失败。这里讲介绍一下Ubuntu下PHP开发环境搭建，以作备忘。</strong></p>
 </blockquote>
-<h4 id="替换表达式"><a href="#替换表达式" class="headerlink" title="替换表达式"></a><strong>替换表达式</strong></h4><pre><code>:[range]s/from/to/[flags]
-</code></pre><p>其中，<code>range</code>指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：</p>
+<p><strong>Apache安装</strong></p>
+<p>首先通过apt-get安装apache：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt-get install apache2</span><br></pre></td></tr></table></figure>
+<p>安装成功后，在浏览器中输入<code>127.0.0.1</code>测试一下是否运行，如果现实<code>It works</code>则表示安装成功。</p>
 <a id="more"></a>
-<ul>
-<li><code>n1,n2</code>：表示在n1行到n2行之间搜索替换，包括n1、n2，如<code>：1,10s/from/to/</code>；</li>
-<li><code>n</code>：表示在第n行搜索替换，如<code>：10s/from/to/</code>；</li>
-<li><code>%</code>：表示在全文所有行中搜索替换，如<code>:%s/from/to/</code>；</li>
-<li><code>1,$</code>：同样表示在全文所有行中搜索替换；</li>
-</ul>
-<p><code>flags</code>表示附加参数，主要有四个选项：</p>
-<ul>
-<li><code>c</code>：表示每次替换前询问；</li>
-<li><code>e</code>：表示不显示错误信息；</li>
-<li><code>g</code>：表示全局搜索替换，如果没有该选项，则只替换每行第一个匹配到的字符串；</li>
-<li><code>i</code>：表示忽略大小写。</li>
-</ul>
-<p><em>注：flags的这些选项可以配合使用。</em></p>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><strong>正则表达式</strong></h4><p>正则表达式实际上就是规则的运用，我们首先需要了解一下相应个规则，也就是元字符：</p>
-<ul>
-<li><code>.</code>：表示匹配任意字符；</li>
-<li><code>[abc]</code>：表示匹配括号内的<em>任意一个</em>字符，也可以采用<code>-</code>表示范围，如<code>[a-z]</code>；</li>
-<li><code>[^abc]</code>：表示匹配除括号内的任意字符；</li>
-<li><code>\l</code>：作用同<code>[a-z]</code>；</li>
-<li><code>\L</code>：作用同<code>[^a-z]</code>；</li>
-<li><code>\u</code>：作用同<code>[A-Z]</code>;</li>
-<li><code>\U</code>：作用同<code>[^A-Z]</code>;</li>
-<li><code>\d</code>：表示匹配阿拉伯数字，作用同<code>[0-9]</code>;</li>
-<li><code>D</code>：表示匹配除阿拉伯数字以外的任意字符，作用同<code>[^0-9]</code>;</li>
-<li><code>\x</code>：表示匹配十六进制数字，作用同<code>[0-9A-Fa-f]</code>;</li>
-<li><code>\X</code>：表示匹配出十六进制数字以外的任意字符，作用同<code>[^0-9A-Fa-f]</code>;</li>
-<li><code>\w</code>：表示匹配单词字母，作用同<code>[0-9A-Za-z]</code>;</li>
-<li><code>\W</code>：表示匹配除但此字母以外的任意字符，作用同<code>[0-9A-Za-z]</code>;</li>
-<li><code>\t</code>：表示匹配<code>&lt;TAB&gt;</code>字符；</li>
-<li><code>\s</code>：表示匹配空白字符，作用同<code>[\t]</code>；</li>
-<li><code>\S</code>：表示匹配非空白字符，作用同<code>[^\t]</code>。</li>
-</ul>
-<p>以上元字符用来表示目标对象，那么我们还需要用来表示数量的元字符：</p>
-<ul>
-<li><code>*</code>：表示匹配任意个，包括0；</li>
-<li><code>\+</code>：表示匹配1-任意个；</li>
-<li><code>\?</code>：表示匹配0-1个；</li>
-<li><code>\{n,m}</code>：表示匹配n-m个；</li>
-<li><code>\{n}</code>：表示匹配n个；</li>
-<li><code>\{n,}</code>：表示匹配n-任意个；</li>
-<li><code>\{,m}</code>：表示匹配0-m个。</li>
-</ul>
-<p><strong>需要注意的是，有一些字符在非正则表达式使用时需要将其转义，主要有以下几个：</strong></p>
-<ul>
-<li><code>\*</code>：表示匹配<code>*</code>字符</li>
-<li><code>\.</code>：表示匹配<code>.</code>字符</li>
-<li><code>\/</code>：表示匹配<code>/</code>字符</li>
-<li><code>\</code>：表示匹配<code>\</code>字符</li>
-<li><code>\[</code>：表示匹配<code>[</code>字符</li>
-<li><code>\]</code>：表示匹配<code>]</code>字符</li>
-</ul>
-<p>正则表达式中，也可以以模板的形式创建替换变量：以<code>\(</code>和<code>\)</code>括起来的正则表达式就可以认为是一个模板，在之后的使用过程中可以<code>\1</code>和<code>\2</code>形式访问其中内容。</p>
+<p>apache默认的根目录通常为<code>/var/www</code>，也可能是<code>/var/www/html</code></p>
+<p><strong>Mysql安装</strong></p>
+<p>安装mysql服务器及客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt-get install mysql-server mysql-client</span><br></pre></td></tr></table></figure>
+<p>建议安装过程中设置密码。</p>
+<p>安装完成后，终端下测试是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#mysql -uroot -p</span><br></pre></td></tr></table></figure>
+<p>输入密码后连接成功则说明已安装好。如果安装过程中没有设置密码，可直接输入<code>mysql</code>进行连接测试。</p>
+<p><strong>PHP安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt-get install php5</span><br></pre></td></tr></table></figure>
+<p><strong>其他模块安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt-get install libapache2-mod-php5</span><br></pre></td></tr></table></figure>
+<p><code>libapache2-mod-php5</code>这个软件包作用就是使得PHP通过apache的mod执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt-get install libapache2-mod-auth-mysql php5-mysql</span><br></pre></td></tr></table></figure>
+<p>上面的两个模块作用是使apache、php支持mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt-get install php5-gd</span><br></pre></td></tr></table></figure>
+<p>GD库安装，图库，图片处理离不开这个模块，但并不是开发环境所必须。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo apt-get install php5-curl</span><br></pre></td></tr></table></figure>
+<p>curl扩展安装，支持ftp、http等协议，并不是开发环境所必须。</p>
 
       
     </div>
@@ -301,18 +275,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/08/Apache与mod-wsgi部署Django-一/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Apache与mod_wsgi部署Django(一)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/05/Git搭建及常用命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git搭建及常用命令</div>
+    <a href="/2016/03/13/M字符常用处理方案/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">^M字符常用处理方案</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -328,7 +293,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Vim查找替换及相关正则表达式" data-title="Vim查找替换及相关正则表达式" data-url="http://yoursite.com/2016/03/07/Vim查找替换及相关正则表达式/"></div>
+	<div class="ds-thread" data-thread-key="Ubuntu下PHP开发环境搭建" data-title="Ubuntu下PHP开发环境搭建" data-url="http://yoursite.com/2016/03/13/Ubuntu下PHP开发环境搭建/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

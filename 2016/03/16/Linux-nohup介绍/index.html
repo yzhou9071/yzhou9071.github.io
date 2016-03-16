@@ -4,30 +4,36 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>简明Markdown语法 | 冷饭博客</title>
+  <title>Linux nohup介绍 | 冷饭博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言Markdown本着易写易读的宗旨变得越来越流行，尤其是对广大码农来说，更是必不可少。希望在本文的介绍下，能在看完博客的同时就可以完成Markdown的大部分任务。
-详细教程可参考：Markdown语法说明
-符号
-Markdown符号 ： *，-，+ 这三个符号的效果作用相同
-\ ： 转义字符，可用来转义Markdown中符号">
+  <meta name="description" content="很多情况下我们需要一些程序后台执行。Linux支持使用&amp;amp;符号使程序后台执行。但很多情况下，这一方法是不奏效的，或者说不能够完全满足需求的。这里将介绍一下nohup命令，来满足一般程序的后台执行。
+
+与&amp;amp;区别
+共同点：二者都是使程序后台执行。
+不同点：
+
+&amp;amp;的后台是基于tty的，就是说一旦关闭终端，程序也会终止；而nohup相当于起了一个独立的后台进程，它是不基于tty的，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简明Markdown语法">
-<meta property="og:url" content="http://yoursite.com/2016/03/04/简明Markdown语法/index.html">
+<meta property="og:title" content="Linux nohup介绍">
+<meta property="og:url" content="http://yoursite.com/2016/03/16/Linux-nohup介绍/index.html">
 <meta property="og:site_name" content="冷饭博客">
-<meta property="og:description" content="前言Markdown本着易写易读的宗旨变得越来越流行，尤其是对广大码农来说，更是必不可少。希望在本文的介绍下，能在看完博客的同时就可以完成Markdown的大部分任务。
-详细教程可参考：Markdown语法说明
-符号
-Markdown符号 ： *，-，+ 这三个符号的效果作用相同
-\ ： 转义字符，可用来转义Markdown中符号">
-<meta property="og:updated_time" content="2016-03-04T03:14:36.144Z">
+<meta property="og:description" content="很多情况下我们需要一些程序后台执行。Linux支持使用&amp;amp;符号使程序后台执行。但很多情况下，这一方法是不奏效的，或者说不能够完全满足需求的。这里将介绍一下nohup命令，来满足一般程序的后台执行。
+
+与&amp;amp;区别
+共同点：二者都是使程序后台执行。
+不同点：
+
+&amp;amp;的后台是基于tty的，就是说一旦关闭终端，程序也会终止；而nohup相当于起了一个独立的后台进程，它是不基于tty的，">
+<meta property="og:updated_time" content="2016-03-16T11:54:02.173Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简明Markdown语法">
-<meta name="twitter:description" content="前言Markdown本着易写易读的宗旨变得越来越流行，尤其是对广大码农来说，更是必不可少。希望在本文的介绍下，能在看完博客的同时就可以完成Markdown的大部分任务。
-详细教程可参考：Markdown语法说明
-符号
-Markdown符号 ： *，-，+ 这三个符号的效果作用相同
-\ ： 转义字符，可用来转义Markdown中符号">
+<meta name="twitter:title" content="Linux nohup介绍">
+<meta name="twitter:description" content="很多情况下我们需要一些程序后台执行。Linux支持使用&amp;amp;符号使程序后台执行。但很多情况下，这一方法是不奏效的，或者说不能够完全满足需求的。这里将介绍一下nohup命令，来满足一般程序的后台执行。
+
+与&amp;amp;区别
+共同点：二者都是使程序后台执行。
+不同点：
+
+&amp;amp;的后台是基于tty的，就是说一旦关闭终端，程序也会终止；而nohup相当于起了一个独立的后台进程，它是不基于tty的，">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -199,11 +205,11 @@ Markdown符号 ： *，-，+ 这三个符号的效果作用相同
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-简明Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux-nohup介绍" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/04/简明Markdown语法/" class="article-date">
-  	<time datetime="2016-03-04T02:37:44.000Z" itemprop="datePublished">2016-03-04</time>
+      <a href="/2016/03/16/Linux-nohup介绍/" class="article-date">
+  	<time datetime="2016-03-16T11:51:03.000Z" itemprop="datePublished">2016-03-16</time>
 </a>
     </div>
   
@@ -216,7 +222,7 @@ Markdown符号 ： *，-，+ 这三个符号的效果作用相同
         
   
     <h1 class="article-title" itemprop="name">
-      简明Markdown语法
+      Linux nohup介绍
     </h1>
   
 
@@ -225,7 +231,7 @@ Markdown符号 ： *，-，+ 这三个符号的效果作用相同
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
 	</div>
 
         
@@ -236,43 +242,33 @@ Markdown符号 ： *，-，+ 这三个符号的效果作用相同
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>Markdown本着易写易读的宗旨变得越来越流行，尤其是对广大码农来说，更是必不可少。希望在本文的介绍下，能在看完博客的同时就可以完成Markdown的大部分任务。</p>
-<p>详细教程可参考：<a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown语法说明</a></p>
-<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a><strong>符号</strong></h3><ul>
-<li><em>Markdown符号</em> ： *，-，+ 这三个符号的效果作用相同</li>
-<li><em>\</em> ： 转义字符，可用来转义Markdown中符号</li>
+        <blockquote>
+<p><strong>很多情况下我们需要一些程序后台执行。Linux支持使用<code>&amp;</code>符号使程序后台执行。但很多情况下，这一方法是不奏效的，或者说不能够完全满足需求的。这里将介绍一下nohup命令，来满足一般程序的后台执行。</strong></p>
+</blockquote>
+<p><strong>与<code>&amp;</code>区别</strong></p>
+<p>共同点：二者都是使程序后台执行。</p>
+<p>不同点：</p>
+<ul>
+<li><p><code>&amp;</code>的后台是基于<code>tty</code>的，就是说一旦关闭终端，程序也会终止；而<code>nohup</code>相当于起了一个独立的后台进程，它是不基于tty的，即使终端关闭，甚至logout，程序依旧会继续执行。</p>
+</li>
+<li><p>nohup模式会默重定向文件，即程序的输出会被重定向到nohup.out（默认）文件中，这就相当于log了，这一点对于程序员来说相当重要。</p>
+</li>
 </ul>
 <a id="more"></a>
-<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a><strong>标题</strong></h3><p>Markdown中有两种标题方式：</p>
-<ul>
-<li><em>类Setext形式</em> ：以底线的形式，利用<code>＝</code>（最高阶标题）和<code>－</code>（最低阶标题），任意数量均有效</li>
-<li><em>类Atx形式</em> ：文字前1–6个<code>#</code>号实现，1–6分别对应声称h1–h6</li>
-</ul>
-<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a><strong>分割线</strong></h3><p>三个以上的<code>Markdown符号</code>，符号间可以有空格。</p>
-<h3 id="段落"><a href="#段落" class="headerlink" title="段落"></a><strong>段落</strong></h3><p>文本前后通过<code>空白行</code>来区分段落。</p>
-<h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a><strong>强调</strong></h3><p>文本前后环绕<code>*</code>表示强调：</p>
-<ul>
-<li>单个<code>*</code>环绕 ： 弱强调</li>
-<li>两个<code>*</code>环绕 ： 强调</li>
-<li>三个<code>*</code>环绕 ： 特别强调</li>
-</ul>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a><strong>引用</strong></h3><p>行首加<code>&gt;</code>和<code>空格</code>表示引用，可以嵌套使用。</p>
-<p><em>注意：</em>空格不可以省略。</p>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a><strong>列表</strong></h3><ul>
-<li><em>无序列表</em> ：使用<code>*,-,+</code>加上<code>空格</code>来表示</li>
-<li><em>有序列表</em> ：使用<code>数字</code>加<code>.</code>加<code>空格</code>来表示</li>
-<li><em>嵌套列表</em> ：嵌套的列表采用<code>空格</code>加<code>*,-,+</code>加<code>空格</code>表示</li>
-</ul>
-<p><em>注意：</em></p>
-<ol>
-<li>空格不可以省略</li>
-<li>*,-,+符号不可以混合使用</li>
-</ol>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a><strong>链接</strong></h3><ul>
-<li>使用<code>[显示文本](url,&quot;title&quot;)</code>表示，其中title为可选</li>
-<li>也可以采用<code>&lt;url&gt;</code>这种方式简写，最终文本表现形式就是url本身</li>
-</ul>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a><strong>图片</strong></h3><p>使用<code>![显示文本](/path/image.jpg,&quot;title&quot;)</code>表示，其中title为可选。</p>
+<p><strong>nohup命令及参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：nohup command args &amp;</span><br></pre></td></tr></table></figure>
+<p>其中<code>command</code>是要执行的命令，args是对应参数，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#sudo nohup tcpdump -i eth0 -nn &amp;</span><br><span class="line">&gt;&gt;nohup: ignoring input and appending output to ‘nohup.out’</span><br></pre></td></tr></table></figure>
+<p>这条命令就是采用nohup执行<code>tcpdump</code>命令，参数是<code>-i eth0 -nn</code>。命令执行后输出表示已将输出信息重定向到当前目录<code>nohup.out</code>文件中。</p>
+<p>在默认状态下，nohup命令都会将输出重定向到当前目录下的<code>nohup.out</code>文件中。nohup是不挂起的意思，这就意味着该命令执行后即使在关闭终端、退出账户后依旧会继续执行相应的程序。</p>
+<p>nohup也可以另外指定输出文件，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup command &gt; test.txt 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p>这行命令的意思就是将<code>command</code>执行结果重定向到当前目录的<code>test.txt</code>文件中。</p>
+<p><strong>nohup关闭</strong></p>
+<p>nohup关闭可以先通过jobs查看任务，然后通过fg关闭对应进程号，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#jobs</span><br><span class="line">&gt;&gt;[1]  + running    sudo nohup tcpdump -i eth0 -nn</span><br><span class="line">#fg %1</span><br></pre></td></tr></table></figure>
+<p>也可以通过查看进程号，杀死对应进程来关闭，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ps -aux | grep nohup</span><br><span class="line">&gt;&gt;root     10241  0.0  0.0   6796  1952 pts/10   SN   14:50   0:00 sudo nohup tcpdump -i eth0 -nn</span><br><span class="line"># kill -9 10241</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -282,18 +278,9 @@ Markdown符号 ： *，-，+ 这三个符号的效果作用相同
     
 <nav id="article-nav">
   
-    <a href="/2016/03/05/Git搭建及常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Git搭建及常用命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/03/cordova图片上传/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cordova图片上传</div>
+    <a href="/2016/03/15/JavaScript随机数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript随机数</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -309,7 +296,7 @@ Markdown符号 ： *，-，+ 这三个符号的效果作用相同
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="简明Markdown语法" data-title="简明Markdown语法" data-url="http://yoursite.com/2016/03/04/简明Markdown语法/"></div>
+	<div class="ds-thread" data-thread-key="Linux-nohup介绍" data-title="Linux nohup介绍" data-url="http://yoursite.com/2016/03/16/Linux-nohup介绍/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

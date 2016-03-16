@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 12px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 12px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 14px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 14px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 12px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 12px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 16px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 12px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
+						<a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 12px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 12px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 14px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16px;">常用命令</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 12px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 12px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 16px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 12px;">移动开发</a> <a href="/tags/语法/" style="font-size: 10px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,77 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Linux-nohup介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/16/Linux-nohup介绍/" class="article-date">
+  	<time datetime="2016-03-16T11:51:03.000Z" itemprop="datePublished">2016-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/16/Linux-nohup介绍/">Linux nohup介绍</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>很多情况下我们需要一些程序后台执行。Linux支持使用<code>&amp;</code>符号使程序后台执行。但很多情况下，这一方法是不奏效的，或者说不能够完全满足需求的。这里将介绍一下nohup命令，来满足一般程序的后台执行。</strong></p>
+</blockquote>
+<p><strong>与<code>&amp;</code>区别</strong></p>
+<p>共同点：二者都是使程序后台执行。</p>
+<p>不同点：</p>
+<ul>
+<li><p><code>&amp;</code>的后台是基于<code>tty</code>的，就是说一旦关闭终端，程序也会终止；而<code>nohup</code>相当于起了一个独立的后台进程，它是不基于tty的，即使终端关闭，甚至logout，程序依旧会继续执行。</p>
+</li>
+<li><p>nohup模式会默重定向文件，即程序的输出会被重定向到nohup.out（默认）文件中，这就相当于log了，这一点对于程序员来说相当重要。</p>
+</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/16/Linux-nohup介绍/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-JavaScript随机数" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -293,7 +364,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
 	</div>
 
       

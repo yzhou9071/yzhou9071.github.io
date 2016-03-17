@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Java进击：抽象类与接口 | 冷饭博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="抽象类与接口时java中对抽象概念进行定义的两种机制，但对于新手来说，这两个概念存在着很大的相似，甚至可以互换，有些难以理解。本文将对抽象类与接口做出解释与对比，以作备忘。
+
+抽象类什么是抽象类
+我们都知道，在面向对象的概念中，所有对象都是通过类描述的。但是反过来，并不是所有的类都可以用来描述对象的。如果一个类中没有包含足够的信息来描述一个具体对象，这样的类就是抽象类。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java进击：抽象类与接口">
+<meta property="og:url" content="http://yoursite.com/2016/03/17/Java进击：抽象类与接口/index.html">
+<meta property="og:site_name" content="冷饭博客">
+<meta property="og:description" content="抽象类与接口时java中对抽象概念进行定义的两种机制，但对于新手来说，这两个概念存在着很大的相似，甚至可以互换，有些难以理解。本文将对抽象类与接口做出解释与对比，以作备忘。
+
+抽象类什么是抽象类
+我们都知道，在面向对象的概念中，所有对象都是通过类描述的。但是反过来，并不是所有的类都可以用来描述对象的。如果一个类中没有包含足够的信息来描述一个具体对象，这样的类就是抽象类。">
+<meta property="og:updated_time" content="2016-03-17T08:43:54.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java进击：抽象类与接口">
+<meta name="twitter:description" content="抽象类与接口时java中对抽象概念进行定义的两种机制，但对于新手来说，这两个概念存在着很大的相似，甚至可以互换，有些难以理解。本文将对抽象类与接口做出解释与对比，以作备忘。
+
+抽象类什么是抽象类
+我们都知道，在面向对象的概念中，所有对象都是通过类描述的。但是反过来，并不是所有的类都可以用来描述对象的。如果一个类中没有包含足够的信息来描述一个具体对象，这样的类就是抽象类。">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <!--
+<div class="overlay"></div> 
+-->
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Keen Zhou</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								
+									<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+								
+					        
+								
+									<a class="mail" target="_blank" href="mailto:yzhou9071@gmail.com" title="mail">mail</a>
+								
+					        
+								
+									<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+								
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Django/" style="font-size: 12px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Java进击/" style="font-size: 10px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 12px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 12px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 14px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 10px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 12px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 12px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 16px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 12px;">移动开发</a> <a href="/tags/语法/" style="font-size: 12px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme" style="color:white;">
+					
+					
+						冷饭<br>
+					
+						野生程序猿<br>
+					
+						www.yzhou9071.com<br>
+					
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Keen Zhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Keen Zhou</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/yzhou9071@gmail.com" title="mail">mail</a>
+			        
+						<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Java进击：抽象类与接口" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/17/Java进击：抽象类与接口/" class="article-date">
+  	<time datetime="2016-03-17T08:38:52.000Z" itemprop="datePublished">2016-03-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java进击：抽象类与接口
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java进击/">Java进击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用概念/">常用概念</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>抽象类与接口时java中对抽象概念进行定义的两种机制，但对于新手来说，这两个概念存在着很大的相似，甚至可以互换，有些难以理解。本文将对抽象类与接口做出解释与对比，以作备忘。</strong></p>
+</blockquote>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a><strong>抽象类</strong></h4><p><strong>什么是抽象类</strong></p>
+<p>我们都知道，在面向对象的概念中，所有对象都是通过类描述的。但是反过来，并不是所有的类都可以用来描述对象的。如果一个类中没有包含足够的信息来描述一个具体对象，这样的类就是抽象类。</p>
+<a id="more"></a>
+<p>从语法上来讲，使用了关键字<code>abstract</code>修饰的类就称为抽象类。通常情况下，如果一个类中包含了一个或多个抽象方法，那么这个类就必须指定成抽象类。如下，我们定义了一个Animal的抽象类，有两个抽象方法，分别来表征动物的奔跑以及叫这两个属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Animal &#123;</span><br><span class="line">     public abstract void run();</span><br><span class="line">     public abstract void shout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>为什么要用抽象类</strong></p>
+<p>抽象类除了不能实例化对象之外，类的其他功能依然存在，成员变量、成员方法以及构造方法的访问方式均和普通类一致。</p>
+<p>抽象类定义了一组抽象方法，但这组抽象方法的具体实现只能由派生类实现，这种设计方式体现了数据抽象的思想，是实现多态的一种机制。同时，抽象类不能实例化对象，因此抽象类必须被继承才能够被使用。正是由于这个原因，通常在类设计阶段就决定了是否设计及采用抽象类。</p>
+<p>我们可以认为，抽象类的存在就是为了继承，没有继承就没有任何存在意义。我们可以通过下面这个例子感受一下抽象类的使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Animal &#123;</span><br><span class="line">     public abstract void run();</span><br><span class="line">     public abstract void shout();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Cat extends Animal&#123;</span><br><span class="line">     @Override</span><br><span class="line">     public void shout() &#123;</span><br><span class="line">          System.out.println(&quot;猫叫：喵喵...&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Dog extends Animal&#123;</span><br><span class="line">     @Override</span><br><span class="line">     public void shout() &#123;</span><br><span class="line">          System.out.println(&quot;狗叫:汪汪...&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>抽象类使用场景：</p>
+<ol>
+<li>如果拥有一些方法，并且希望这些方法中有一些可以默认实现；</li>
+<li>如果一些方法的基本功能不断改变，那么就需要使用抽象类，这样可以避免在实现该方法的多处地方频繁变动。</li>
+</ol>
+<p><strong>抽象类注意问题</strong></p>
+<p>在使用抽象类时，我们通常需要注意几个问题：</p>
+<ol>
+<li>只要包含抽象方法的类，就必须定义成抽象类，不管是否包含其他方法；</li>
+<li>抽象类不能实例化，只能由其子类实例化；</li>
+<li>抽象方法必须由子类进行重写；</li>
+<li>抽象类可以包含具体方法，同时，也可以不包含抽象方法；</li>
+<li>子类中的抽象方法不能与父类抽象方法相同；</li>
+<li>abstract不能与final同时用来修饰同一个类；</li>
+<li>abstract不能与private、static、final或native并列修饰同一个方法。</li>
+</ol>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a><strong>接口</strong></h4><p><strong>什么是接口</strong></p>
+<p>接口实际上就是一系列方法的声明，或者说是一些方法特征的集合。接口只有方法的特征而没有方法的实现，因此这些方法可以在不同的地方被不同的类实现。</p>
+<p>那么接口到底是什么？接口的最大意义实际上就是告诉你这个类里有啥，能干啥。举个例子来说，我们看到肯德基就知道里面有炸鸡，实际上接口也是这样的，接口就是告诉你里面有什么行为，至于怎么实现这些行为就需要你自己来搞了。比如说，我们希望完成一个字符串的比较，我们可以在类中直接定义一个方法完成字符串的比较，但在另一个类中我又想完成一个整数的比较呢？很多情况下，人们是不关注具体实现过程的，他们只关注做了些啥事儿，而接口就可以达到这样的目的。</p>
+<p>还有一种理解，可以把接口认为是一个统一标准，或者就是个协议（在Object-C中已经把接口称作协议了）。这样的目的，或者好处就是上面所说的：能够让大家知道这个是做什么，而又不需要知道具体怎么做。</p>
+<p><strong>什么时候使用</strong></p>
+<p>如果希望实现多重继承，那么就必须采用接口了。因为Java不支持多继承，子类不能够继承多个类，但可以实现多个接口。</p>
+<p><strong>接口使用注意问题</strong></p>
+<p>使用接口过程中需要注意如下几个问题：</p>
+<ol>
+<li>接口中所有方法访问权限均被自动声明为public，否则，将会编译出错；</li>
+<li>接口中不存在实现的方法；</li>
+<li>接口中可以定义成员变量，但所有成员变量会自动被public staic final修饰，也就是不可变变量；</li>
+<li>实现接口的非抽象类必须实现所有方法，抽象类可以不用实现；</li>
+<li>不能使用new实例化一个接口；</li>
+<li>多接口实现时注意避免方法名的重复。</li>
+</ol>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a><strong>区别</strong></h4><ol>
+<li>从语法层次来说，抽象类可以拥有任意范围的成员数据，同时也可以拥有自己的非抽象方法；但在接口中，仅能够有静态、不能修改的成员数据，并且其所有方法都必须是抽象的。从某种程度上来说，我们可以认为接口是抽象类的特殊化。同时，从继承角度来说，子类只能继承一个抽象类，但可以实现多个接口；</li>
+<li>抽象层次不同，抽象类是对类的抽象，而接口是对行为的抽象，这是一个整体与局部的关系；</li>
+<li>抽象类的子类一般都是具有相似特点的，比如说，猫、狗同属于动物；而对于接口来说，它的实现子类不存在任何关系，最多我们可以认为这些子类有着部分相类似的功能；</li>
+<li>抽象类可以有构造器，而接口不能有构造器；</li>
+<li>相比较来说，抽象类的速度要比接口块，最主要原因是接口需要时间寻找类中实现的方法。</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/16/Linux-nohup介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux nohup介绍</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Java进击：抽象类与接口" data-title="Java进击：抽象类与接口" data-url="http://yoursite.com/2016/03/17/Java进击：抽象类与接口/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Keen Zhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

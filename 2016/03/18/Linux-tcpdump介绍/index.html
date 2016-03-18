@@ -4,27 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Storm单机安装及配置 | 冷饭博客</title>
+  <title>Linux tcpdump介绍 | 冷饭博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。
-本文的系统环境为Ubuntu1404，Python版本为2.7.6。
+  <meta name="description" content="最近课题需要一些网络包数据，正好前几天又看到了关于tcpdump的介绍。这里简单介绍一下关于tcpdump的参数、表达式等相关内容。
 
-Storm安装">
+介绍tcpdump是Linux命令行下常用的一款抓包工具，可以根据使用者的定义将网络中传送的数据包完全截取下来，以便用作分析。该命令支持针对网络层、协议、主机、网络或端口的过滤，并提供了and、or、not等逻辑语句协助过滤无用信息。
+命令格式：tcpdump">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Storm单机安装及配置">
-<meta property="og:url" content="http://yoursite.com/2016/03/10/Storm单机安装及配置/index.html">
+<meta property="og:title" content="Linux tcpdump介绍">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/Linux-tcpdump介绍/index.html">
 <meta property="og:site_name" content="冷饭博客">
-<meta property="og:description" content="本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。
-本文的系统环境为Ubuntu1404，Python版本为2.7.6。
+<meta property="og:description" content="最近课题需要一些网络包数据，正好前几天又看到了关于tcpdump的介绍。这里简单介绍一下关于tcpdump的参数、表达式等相关内容。
 
-Storm安装">
-<meta property="og:updated_time" content="2016-03-10T13:11:53.894Z">
+介绍tcpdump是Linux命令行下常用的一款抓包工具，可以根据使用者的定义将网络中传送的数据包完全截取下来，以便用作分析。该命令支持针对网络层、协议、主机、网络或端口的过滤，并提供了and、or、not等逻辑语句协助过滤无用信息。
+命令格式：tcpdump">
+<meta property="og:updated_time" content="2016-03-18T07:56:16.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Storm单机安装及配置">
-<meta name="twitter:description" content="本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。
-本文的系统环境为Ubuntu1404，Python版本为2.7.6。
+<meta name="twitter:title" content="Linux tcpdump介绍">
+<meta name="twitter:description" content="最近课题需要一些网络包数据，正好前几天又看到了关于tcpdump的介绍。这里简单介绍一下关于tcpdump的参数、表达式等相关内容。
 
-Storm安装">
+介绍tcpdump是Linux命令行下常用的一款抓包工具，可以根据使用者的定义将网络中传送的数据包完全截取下来，以便用作分析。该命令支持针对网络层、协议、主机、网络或端口的过滤，并提供了and、or、not等逻辑语句协助过滤无用信息。
+命令格式：tcpdump">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -196,11 +196,11 @@ Storm安装">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Storm单机安装及配置" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux-tcpdump介绍" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/10/Storm单机安装及配置/" class="article-date">
-  	<time datetime="2016-03-10T13:00:57.000Z" itemprop="datePublished">2016-03-10</time>
+      <a href="/2016/03/18/Linux-tcpdump介绍/" class="article-date">
+  	<time datetime="2016-03-18T07:53:52.000Z" itemprop="datePublished">2016-03-18</time>
 </a>
     </div>
   
@@ -213,7 +213,7 @@ Storm安装">
         
   
     <h1 class="article-title" itemprop="name">
-      Storm单机安装及配置
+      Linux tcpdump介绍
     </h1>
   
 
@@ -222,7 +222,7 @@ Storm安装">
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Storm/">Storm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
 	</div>
 
         
@@ -234,88 +234,55 @@ Storm安装">
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p><strong>本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。</strong></p>
-<p><strong>本文的系统环境为Ubuntu1404，Python版本为2.7.6。</strong></p>
+<p><strong>最近课题需要一些网络包数据，正好前几天又看到了关于tcpdump的介绍。这里简单介绍一下关于tcpdump的参数、表达式等相关内容。</strong></p>
 </blockquote>
-<h3 id="Storm安装"><a href="#Storm安装" class="headerlink" title="Storm安装"></a><strong>Storm安装</strong></h3><a id="more"></a>
-<ol>
-<li><p><strong>安装必要的组件</strong></p>
-<pre><code>$ sudo apt-get install uuid-dev libtool make automake
-</code></pre><p> 本文在安装过程中遇到了libsodium依赖问题，这里提供解决方法：github上提供了libsodium的<a href="https://github.com/jedisct1/libsodium" target="_blank" rel="external">下载</a>，clone后可直接编译安装。</p>
-</li>
-<li><p><strong>安装zeromq</strong></p>
-<p> 下载<a href="http://download.zeromq.org/zeromq-4.1.3.zip" target="_blank" rel="external">zeromq</a>，编译安装：</p>
-<pre><code>$ ./autogen.sh
- $ ./configure
- $ make
- $ sudo make install
- $ sudo ldconfig (更新LD_LIBRARY_PATH)
-</code></pre></li>
-<li><p><strong>安装jzmq</strong></p>
-<p> 下载<a href="http://download.zeromq.org/zeromq-4.1.3.zip" target="_blank" rel="external">jzmq</a>，编译安装。</p>
-<pre><code>$ ./autogen.sh
-$ ./configure
-$ make
-$ sudo make install
-</code></pre></li>
-<li><p><strong>安装部署zookeeper</strong></p>
-<p> <em>安装</em></p>
-<p> 下载<a href="http://www.cnblogs.com/linjiqin/archive/2013/03/16/2962597.html" target="_blank" rel="external">zookeeper</a>，解压即可。</p>
-<p> <em>部署</em></p>
-<p> 添加环境变量</p>
-<pre><code>export ZOOKEEPER_HOME=&quot;/your path/zookeeper&quot;
-export PATH=$PATH:$ZOOKEEPER_HOME/bin
-</code></pre><p> <em>配置文件</em></p>
-<pre><code>$ cp /your path/conf/zoo_example.cfg /your path/conf/zoo.cfg
-</code></pre></li>
-<li><p><strong>安装部署Storm</strong></p>
-<p> <em>安装</em></p>
-<p> 下载<a href="https://github.com/apache/storm" target="_blank" rel="external">Storm</a>，解压即可。</p>
-<p> <em>部署</em></p>
-<p> 将解压的文件夹移至<code>/usr/local</code>下，并做软链接，如下：</p>
-<pre><code>$ mv apache-storm-0.9.5 /usr/local/
-$ ln -s /usr/local/apache-storm-0.9.5 /usr/local/storm
-</code></pre><p>  <em>添加环境变量</em></p>
-<pre><code>export STORM_HOME=&quot;/usr/local/apache-storm-0.9.5&quot;
-export PATH=$PATH:$STORM_HOME/bin
-</code></pre></li>
-</ol>
-<h3 id="Storm本地模式测试"><a href="#Storm本地模式测试" class="headerlink" title="Storm本地模式测试"></a><strong>Storm本地模式测试</strong></h3><ol>
-<li><p><strong>启动Storm</strong></p>
-<pre><code>/your path/zookeeper/bin/zkServer.sh start
-/usr/local/storm/bin/storm nimbus &amp;
-/usr/local/storm/bin/storm supervisor &amp;
-/usr/local/storm/bin/storm ui &amp;
-</code></pre><p> 如果添加过环境变量，就可以直接使用。我们通常用<code>jps</code>命令来查看进程状态，在没有运行任务时，必须应该看到五个进程（core、nimbus、supervisor、QuorumPeerMain、Jps）；否则，Storm就没有正确启动。运行期间，可以通过<code>http://127.0.0.1:8080</code>进入Storm UI，查看相关信息。</p>
-</li>
-<li><p><strong>WordCount测试</strong></p>
-<ul>
-<li><p>下载<a href="https://github.com/apache/storm/tree/master/examples/storm-starter" target="_blank" rel="external">storm-starter</a>：storm-starter是apache提供给初学者学习的一个例子。</p>
-</li>
-<li><p>下载相关软件包：<a href="http://commons.apache.org/proper/commons-collections/download_collections.cgi" target="_blank" rel="external">commons-collections</a>，<a href="http://cn.jarfire.org/twitter4j.html" target="_blank" rel="external">twitter4j</a>。</p>
-</li>
-<li>启动eclipse，新建<code>Java Project</code>工程，工程名任意，此处定为testWordCount。</li>
-<li><p>右击testWordCount，选择<code>import-&gt;File System</code>，选择<code>storm-starter-&gt;src-&gt;jvm-&gt;storm</code>文件夹。将storm文件夹导入后，将其拖入到src文件夹下。同样的方式将<code>storm-starter-&gt;multilang</code>导入，形成如图所示结构：</p>
-</li>
-<li><p>此时的项目由于缺少必要的依赖项目，存在很多错误。右击项目，选择<code>Properties-&gt;Java Build Path</code>，在<code>Libraries</code>选项卡选择<code>Add External JARs</code>，如图所示：</p>
-</li>
-<li><p>将<code>storm-0.9.5/lib</code>目录下的所有jar包添加到项目中，同时，将刚刚下载的<code>commons-collections</code>、<code>twitter4j</code>等jar包添加到项目中。</p>
-</li>
-<li><p>将<code>PrintSampleStream.java</code>和<code>TwitterSampleSpout.java</code>中的注释取消，或者直接删除。</p>
-</li>
-<li><p>将项目导出，选择<code>JAR File</code>，如图所示：</p>
-</li>
-<li><p>导出页面勾选如下图所示：</p>
-</li>
-<li><p>此时我们就得到了一个<code>WordCount.jar</code>，将其拷贝到<code>/usr/local/apache-storm-0.9.5</code>目录下，在终端中输入：</p>
-<pre><code>bin/storm jar WordCount.jar storm.starter.WordCountTopology wordcount
-</code></pre><p>  这里需要注意的是，命令是在<code>WordCount.jar</code>当前路径下进行的；<code>storm.starter.WordCountTopology</code>是需要提交的topology在src下的路径；<code>wordcount</code>是提交的topology名称。名称执行完后，就可以通过Storm UI访问了，如图所示：</p>
-</li>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a><strong>介绍</strong></h3><p>tcpdump是Linux命令行下常用的一款抓包工具，可以根据使用者的定义将网络中传送的数据包完全截取下来，以便用作分析。该命令支持针对网络层、协议、主机、网络或端口的过滤，并提供了and、or、not等逻辑语句协助过滤无用信息。</p>
+<p><strong>命令格式：</strong>tcpdump [选项] [-c 数量] [-i 网络接口] [-w 文件名] [表达式]</p>
+<a id="more"></a>
+<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a><strong>常用选项</strong></h3><ul>
+<li>-l：使标准输出变为缓冲行形式；</li>
+<li>-c：抓包次数；</li>
+<li>-nn：IP和端口以数字形式显示，而非主机名或服务名称；</li>
+<li>-s：设置每个数据包的大小；</li>
+<li>-i：指定监听的网络接口；</li>
+<li>-r：从执行文件中读取包；</li>
+<li>-w：输出信息保存到指定文件中；</li>
+<li>-a：将网络地址和广播地址转变成名字；</li>
+<li>-d：将匹配的信息包以汇编格式输出；</li>
+<li>-e：打印数据链路层的头部信息；</li>
+<li>-f：将外部Internet地址以数字形式打印；</li>
+<li>-t：不打印时间戳；</li>
+<li>-v：输出详细的数据报文；</li>
+<li>-vv：输出更加详细的数据报文；</li>
+<li>-d：将匹配信息包的代码以人们能够理解的汇编格式给出；</li>
+<li>-dd：将匹配信息包的代码以c语言程序段的格式给出；</li>
+<li>-ddd：将匹配信息包的代码以十进制的形式给出；</li>
+<li>-T：将监听到的包直接解释为指定的类型的报文，常见的类型有rpc （远程过程调用）和snmp（简单网络管理协议）；</li>
 </ul>
-</li>
-</ol>
-<p>至此，Storm的安装配置及测试就算完成，接下来就可以进行进一步的开发了。</p>
-
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a><strong>表达式</strong></h3><p><strong>关于类型的关键字</strong></p>
+<p>主要包括<code>host</code>、<code>net</code>、<code>port</code>、<code>portrange</code>。host用来指定主机，net用来指定一个网络地址，port用来指定端口号，portrange用来指定端口范围。在未指定类型情况下，缺省类型为host。</p>
+<p><strong>关于传输方向的关键字</strong></p>
+<p>主要包括<code>src</code>、<code>dst</code>。src指明了源IP，dst指明了目标IP。在未指定传输方向情况下，缺省类型为dst or src。</p>
+<p>需要注意的是，该关键字可以与类型关键字共同使用。比如说dst net 192.168.1.0，就表示目标网段是192.168.1.0。事实上，tcpdump的很多关键字都可以共同使用。</p>
+<p><strong>关于协议的关键字</strong></p>
+<p>主要包括<code>ether</code>、<code>fddi</code>、<code>tr</code>、<code>wlan</code>、<code>ip</code>、<code>ip6</code>、<code>arp</code>、<code>rarp</code>、<code>decnet</code>、<code>tcp</code>、<code>udp</code>。ether，fddi，tr，具体含义未知，可理解为物理以太网传输协议、光纤分布数据网传输协议、用于路由跟踪的协议。wlan，无线局域网协议；ip，ip6即通常的TCP/IP协议栈中所使用的ipv4以及ipv6网络层协议；arp，地址解析协议；rarp反向地址解析协议；decnet，机器互联的网络协议；tcp、udp，即通常TCP/IP协议栈中的两个传输层协议。</p>
+<p><strong>关于逻辑运算的关键字</strong></p>
+<ul>
+<li>与运算，<code>and</code>，<code>&amp;&amp;</code></li>
+<li>或运算，<code>or</code>，<code>||</code></li>
+<li>非运算，<code>not</code>，<code>!</code></li>
+</ul>
+<h3 id="实例说明"><a href="#实例说明" class="headerlink" title="实例说明"></a><strong>实例说明</strong></h3><p>监听en0接口。</p>
+<pre><code>#tcpdump -i en0
+</code></pre><p>监听en0接口，将主机名或服务名称以IP及端口形式显示。</p>
+<pre><code>＃tcpdump -i en0 -nn
+</code></pre><p>监听en0接口，将主机名或服务名称以IP及端口形式显示，截获所有进出主机192.168.1.106的数据包。</p>
+<pre><code>＃tcpdump －i en0 -nn &quot;host 192.168.1.106&quot;
+</code></pre><p>截获所有源地址为192.168.1.106的数据包。</p>
+<pre><code>＃tcpdump －i en0 -nn &quot;src 192.168.1.106&quot;
+</code></pre><p>截获所有源地址为192.168.1.106，并且访问端口80的数据包。</p>
+<pre><code>#tcpdump -i -en0 -nn &quot;src 192.168.1.106 and port 80&quot;
+</code></pre>
       
     </div>
     
@@ -324,18 +291,9 @@ export PATH=$PATH:$STORM_HOME/bin
     
 <nav id="article-nav">
   
-    <a href="/2016/03/11/PhoneGap-Jquery-Mobile白屏问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          PhoneGap &amp; jQuery Mobile白屏问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/09/Apache与mod-wsgi部署Django（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Apache与mod_wsgi部署Django（二）</div>
+    <a href="/2016/03/17/Java进击：抽象类与接口/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java进击：抽象类与接口</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -351,7 +309,7 @@ export PATH=$PATH:$STORM_HOME/bin
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Storm单机安装及配置" data-title="Storm单机安装及配置" data-url="http://yoursite.com/2016/03/10/Storm单机安装及配置/"></div>
+	<div class="ds-thread" data-thread-key="Linux-tcpdump介绍" data-title="Linux tcpdump介绍" data-url="http://yoursite.com/2016/03/18/Linux-tcpdump介绍/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

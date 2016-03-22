@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 11.67px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 11.67px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.67px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.67px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 13.33px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.33px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.67px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 11.67px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.67px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.67px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 11.67px;">移动开发</a> <a href="/tags/语法/" style="font-size: 16.67px;">语法</a>
+						<a href="/tags/Django/" style="font-size: 11.43px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 12.86px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 12.86px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.43px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.43px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.86px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.57px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 15.71px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 12.86px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.43px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.43px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 14.29px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 11.43px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.14px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,70 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Java进击：异常" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/22/Java进击：异常/" class="article-date">
+  	<time datetime="2016-03-22T09:18:13.000Z" itemprop="datePublished">2016-03-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/22/Java进击：异常/">Java进击：异常</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>无论写得多好的程序，总是难免存在着缺陷。对于这些不可避免的错误或者异常，我们总得进行处理，不能够听之任之。本文主要介绍一下Java中的异常处理相关问题，以作备忘。</strong></p>
+</blockquote>
+<h4 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a><strong>什么是异常</strong></h4><p>首先需要说明的是，什么是异常：简单的说，异常就是阻止当前方法或作用域继续执行因素。那么什么时候会发生异常呢？只有在当前环境下的程序无法正常运行下去，也就是说程序已经无法正确运行了，这种情况下，当前环境就会跳出异常。</p>
+<p>异常的抛出大概会经历如下几个过程。首先，需要new一个异常对象（我们会在下面介绍一下异常对象的继承关系）；接着该对象会在产生异常的位置终止程序，并且从当前环境中弹出对异常对象的引用；也就是说，从这时起，异常处理机制会接管程序，执行异常处理程序，将程序从错误状态恢复，要么继续执行，要么换种方式执行。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java进击/">Java进击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用概念/">常用概念</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/22/Java进击：异常/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-javascript时间" class="article article-type-post" itemscope itemprop="blogPost">
   

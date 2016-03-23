@@ -4,27 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Vim查找替换及相关正则表达式 | 冷饭博客</title>
+  <title>Linux PROMPT_COMMAND | 冷饭博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+  <meta name="description" content="近期查看关于系统审计的一些方法，发现很多提到了PROMPT_COMMAND。这个系统审计，实际上就是可以以文件的形式记录什么用户在什么时间做了什么事儿。这里简要记录一下，以作备忘。
 
-替换表达式:[range]s/from/to/[flags]
-其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
+简介PROMPT_COMMAND是Linux Bash Shell提供的一个环境变量。这个变量实际上就是在bash出现提示符前执行的命令。基于这个特性，它经常被用来做用户审计，即用来记录用户行为，最常用的几个特征就">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vim查找替换及相关正则表达式">
-<meta property="og:url" content="http://yoursite.com/2016/03/07/Vim查找替换及相关正则表达式/index.html">
+<meta property="og:title" content="Linux PROMPT_COMMAND">
+<meta property="og:url" content="http://yoursite.com/2016/03/23/Linux-PROMPT-COMMAND/index.html">
 <meta property="og:site_name" content="冷饭博客">
-<meta property="og:description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+<meta property="og:description" content="近期查看关于系统审计的一些方法，发现很多提到了PROMPT_COMMAND。这个系统审计，实际上就是可以以文件的形式记录什么用户在什么时间做了什么事儿。这里简要记录一下，以作备忘。
 
-替换表达式:[range]s/from/to/[flags]
-其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
-<meta property="og:updated_time" content="2016-03-07T08:14:03.183Z">
+简介PROMPT_COMMAND是Linux Bash Shell提供的一个环境变量。这个变量实际上就是在bash出现提示符前执行的命令。基于这个特性，它经常被用来做用户审计，即用来记录用户行为，最常用的几个特征就">
+<meta property="og:updated_time" content="2016-03-23T12:45:53.885Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vim查找替换及相关正则表达式">
-<meta name="twitter:description" content="最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。
+<meta name="twitter:title" content="Linux PROMPT_COMMAND">
+<meta name="twitter:description" content="近期查看关于系统审计的一些方法，发现很多提到了PROMPT_COMMAND。这个系统审计，实际上就是可以以文件的形式记录什么用户在什么时间做了什么事儿。这里简要记录一下，以作备忘。
 
-替换表达式:[range]s/from/to/[flags]
-其中，range指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：">
+简介PROMPT_COMMAND是Linux Bash Shell提供的一个环境变量。这个变量实际上就是在bash出现提示符前执行的命令。基于这个特性，它经常被用来做用户审计，即用来记录用户行为，最常用的几个特征就">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -196,11 +193,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Vim查找替换及相关正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux-PROMPT-COMMAND" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/07/Vim查找替换及相关正则表达式/" class="article-date">
-  	<time datetime="2016-03-07T08:10:48.000Z" itemprop="datePublished">2016-03-07</time>
+      <a href="/2016/03/23/Linux-PROMPT-COMMAND/" class="article-date">
+  	<time datetime="2016-03-23T12:42:35.000Z" itemprop="datePublished">2016-03-23</time>
 </a>
     </div>
   
@@ -213,7 +210,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vim查找替换及相关正则表达式
+      Linux PROMPT_COMMAND
     </h1>
   
 
@@ -222,7 +219,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vim/">Vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找替换/">查找替换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
 	</div>
 
         
@@ -234,65 +231,34 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p><strong>最近实验生成一个维度较高的邻接矩阵，需要对其进行线性分析。考虑到用程序对其重新规整放入到excel中，但矩阵存在着其他相关信息，处理起来很费脑子，就决定直接用Vim替换了，正好也总结下Vim的相关替换方法。</strong></p>
+<p><strong>近期查看关于系统审计的一些方法，发现很多提到了PROMPT_COMMAND。这个系统审计，实际上就是可以以文件的形式记录什么用户在什么时间做了什么事儿。这里简要记录一下，以作备忘。</strong></p>
 </blockquote>
-<h4 id="替换表达式"><a href="#替换表达式" class="headerlink" title="替换表达式"></a><strong>替换表达式</strong></h4><pre><code>:[range]s/from/to/[flags]
-</code></pre><p>其中，<code>range</code>指的是搜索范围，如果没有指定范围，则表示作用于当前行，range主要有以下几种选择：</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h3><p>PROMPT_COMMAND是Linux Bash Shell提供的一个环境变量。这个变量实际上就是在bash出现提示符前执行的命令。基于这个特性，它经常被用来做用户审计，即用来记录用户行为，最常用的几个特征就是时间、用户名、行为等。</p>
+<p>这里需要注意的有两点：</p>
+<p><strong>Bash Shell：</strong>这个环境变量是Bash提供的，这就意味着使用它的前提是用户使用的Shell是Bash；</p>
 <a id="more"></a>
-<ul>
-<li><code>n1,n2</code>：表示在n1行到n2行之间搜索替换，包括n1、n2，如<code>：1,10s/from/to/</code>；</li>
-<li><code>n</code>：表示在第n行搜索替换，如<code>：10s/from/to/</code>；</li>
-<li><code>%</code>：表示在全文所有行中搜索替换，如<code>:%s/from/to/</code>；</li>
-<li><code>1,$</code>：同样表示在全文所有行中搜索替换；</li>
-</ul>
-<p><code>flags</code>表示附加参数，主要有四个选项：</p>
-<ul>
-<li><code>c</code>：表示每次替换前询问；</li>
-<li><code>e</code>：表示不显示错误信息；</li>
-<li><code>g</code>：表示全局搜索替换，如果没有该选项，则只替换每行第一个匹配到的字符串；</li>
-<li><code>i</code>：表示忽略大小写。</li>
-</ul>
-<p><em>注：flags的这些选项可以配合使用。</em></p>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><strong>正则表达式</strong></h4><p>正则表达式实际上就是规则的运用，我们首先需要了解一下相应个规则，也就是元字符：</p>
-<ul>
-<li><code>.</code>：表示匹配任意字符；</li>
-<li><code>[abc]</code>：表示匹配括号内的<em>任意一个</em>字符，也可以采用<code>-</code>表示范围，如<code>[a-z]</code>；</li>
-<li><code>[^abc]</code>：表示匹配除括号内的任意字符；</li>
-<li><code>\l</code>：作用同<code>[a-z]</code>；</li>
-<li><code>\L</code>：作用同<code>[^a-z]</code>；</li>
-<li><code>\u</code>：作用同<code>[A-Z]</code>;</li>
-<li><code>\U</code>：作用同<code>[^A-Z]</code>;</li>
-<li><code>\d</code>：表示匹配阿拉伯数字，作用同<code>[0-9]</code>;</li>
-<li><code>D</code>：表示匹配除阿拉伯数字以外的任意字符，作用同<code>[^0-9]</code>;</li>
-<li><code>\x</code>：表示匹配十六进制数字，作用同<code>[0-9A-Fa-f]</code>;</li>
-<li><code>\X</code>：表示匹配出十六进制数字以外的任意字符，作用同<code>[^0-9A-Fa-f]</code>;</li>
-<li><code>\w</code>：表示匹配单词字母，作用同<code>[0-9A-Za-z]</code>;</li>
-<li><code>\W</code>：表示匹配除但此字母以外的任意字符，作用同<code>[0-9A-Za-z]</code>;</li>
-<li><code>\t</code>：表示匹配<code>&lt;TAB&gt;</code>字符；</li>
-<li><code>\s</code>：表示匹配空白字符，作用同<code>[\t]</code>；</li>
-<li><code>\S</code>：表示匹配非空白字符，作用同<code>[^\t]</code>。</li>
-</ul>
-<p>以上元字符用来表示目标对象，那么我们还需要用来表示数量的元字符：</p>
-<ul>
-<li><code>*</code>：表示匹配任意个，包括0；</li>
-<li><code>\+</code>：表示匹配1-任意个；</li>
-<li><code>\?</code>：表示匹配0-1个；</li>
-<li><code>\{n,m}</code>：表示匹配n-m个；</li>
-<li><code>\{n}</code>：表示匹配n个；</li>
-<li><code>\{n,}</code>：表示匹配n-任意个；</li>
-<li><code>\{,m}</code>：表示匹配0-m个。</li>
-</ul>
-<p><strong>需要注意的是，有一些字符在非正则表达式使用时需要将其转义，主要有以下几个：</strong></p>
-<ul>
-<li><code>\*</code>：表示匹配<code>*</code>字符</li>
-<li><code>\.</code>：表示匹配<code>.</code>字符</li>
-<li><code>\/</code>：表示匹配<code>/</code>字符</li>
-<li><code>\</code>：表示匹配<code>\</code>字符</li>
-<li><code>\[</code>：表示匹配<code>[</code>字符</li>
-<li><code>\]</code>：表示匹配<code>]</code>字符</li>
-</ul>
-<p>正则表达式中，也可以以模板的形式创建替换变量：以<code>\(</code>和<code>\)</code>括起来的正则表达式就可以认为是一个模板，在之后的使用过程中可以<code>\1</code>和<code>\2</code>形式访问其中内容。</p>
-
+<p>有两种方式可以查看当前系统使用的Shell：</p>
+<ol>
+<li>echo $SHELL</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash</span><br></pre></td></tr></table></figure>
+<ol>
+<li>cat /etc/passwd</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">yzhou:x:1000:1000:yzhou,,,:/home/yzhou:/bin/bash</span><br></pre></td></tr></table></figure>
+<p><strong>Bash出现提示符前执行的命令：</strong>这就意味着在提示符未出现之前该用户的行为是不会被记录的，相对于立即输出的命令来说，这几乎没什么影响，可相对于时效性要求较强的系统来说，这就难以把握了；比如说<code>vi</code>，只有在编辑完，退出后才会被捕获，而该行为实际上是已经发生在过去很久了；</p>
+<pre><code>*注：*这里的命令提示符出现实际上就可以理解为PS1出现的那个时间点；关于PS1的介绍我们以后会有所提及。
+</code></pre><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a><strong>配置</strong></h3><p>编辑<code>/etc/profile</code>文件添加如下两行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HISTORY_FILE=/var/log/test.log</span><br><span class="line">export PROMPT_COMMAND=&apos;date &gt;&gt; $HISTORY_FILE&apos;</span><br></pre></td></tr></table></figure>
+<p>保存退出后重新编译：</p>
+<pre><code>source /etc/profile
+</code></pre><p>上面配置过程实际上就是将每次命令提示符出现的时间打印到了$HISTORY_FILE文件中。理论上这样的配置就可以算是完成了，只要重新配置两个变量的参数就可以了（$HISTORY_FILE修改目标文件，$PROMPT_COMMAND修改对应参数获取不同的行为内容）。但实际上这样子配置之后是不能够达到我们要求的，原因在于<strong>权限问题</strong>：</p>
+<pre><code>在编辑profile文件过程中，我们采用root权限操作，这样就意味着HISTORY_FILE文件只有root用户有读写权限，而其他用户仅仅有读的权限，也就是说这样配置后仍旧无法完成用户纪录写入文件。解决方案自然就是更改相应文件的权限。
+</code></pre><p>还有一种方法可以与上述配置过程产生相同的结果：就是采用syslog的形式，简单说就是以syslog方式将PROMPT_COMMAND内容输出：</p>
+<pre><code>配置/etc/bash.bashrc文件，添加如下内容：
+export PROMPT_COMMAND=&apos;RETRN_VAL=$?;logger -p local6.debug &quot;`date &quot;+%Y-%m-%d %H:%M:%S.%N&quot;`;$(whoami);`id -u $(whoami)`;`groups $(whoami) | cut -d&apos;:&apos; -f2`;$(pwd);$(history 1 | sed &quot;s/^[ ]*[0-9]\+[ ]*//&quot;);&quot;&apos; 
+重启syslog服务即可发现/var/log/commands.log文件，该文件就保存了我们需要的用户行为记录。
+</code></pre>
       
     </div>
     
@@ -301,18 +267,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/08/Apache与mod-wsgi部署Django-一/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Apache与mod_wsgi部署Django(一)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/05/Git搭建及常用命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git搭建及常用命令</div>
+    <a href="/2016/03/22/Java进击：异常/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java进击：异常</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -328,7 +285,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Vim查找替换及相关正则表达式" data-title="Vim查找替换及相关正则表达式" data-url="http://yoursite.com/2016/03/07/Vim查找替换及相关正则表达式/"></div>
+	<div class="ds-thread" data-thread-key="Linux-PROMPT-COMMAND" data-title="Linux PROMPT_COMMAND" data-url="http://yoursite.com/2016/03/23/Linux-PROMPT-COMMAND/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

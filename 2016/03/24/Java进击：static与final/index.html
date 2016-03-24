@@ -4,36 +4,33 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>^M字符常用处理方案 | 冷饭博客</title>
+  <title>Java进击：static与final | 冷饭博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为\r\n，而Linux下为\n。为此，本文提出几个^M字符常用处理方案。
+  <meta name="description" content="本文对Java中static与final关键字的使用做出了总结，以作备忘。
 
-vi替换
-使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如
-:%s/^M//g
-这里是将^M字符删除（用空字符替换），也可以将其替换为回车：
-:%s/^M/\r/g">
+final关键字final表示“不可改变”或者“终态”的意思，可以用来修饰非抽象类、非抽象类成员方法和变量。
+final类
+final类不能被继承，这就意味着final类的成员方法没有机会被覆盖；final类中的方法默认时final的。
+通常，在进行类设计时，如果不需要子类，类的实现细节不需要改变，并且不会再被扩展，那">
 <meta property="og:type" content="article">
-<meta property="og:title" content="^M字符常用处理方案">
-<meta property="og:url" content="http://yoursite.com/2016/03/13/M字符常用处理方案/index.html">
+<meta property="og:title" content="Java进击：static与final">
+<meta property="og:url" content="http://yoursite.com/2016/03/24/Java进击：static与final/index.html">
 <meta property="og:site_name" content="冷饭博客">
-<meta property="og:description" content="通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为\r\n，而Linux下为\n。为此，本文提出几个^M字符常用处理方案。
+<meta property="og:description" content="本文对Java中static与final关键字的使用做出了总结，以作备忘。
 
-vi替换
-使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如
-:%s/^M//g
-这里是将^M字符删除（用空字符替换），也可以将其替换为回车：
-:%s/^M/\r/g">
-<meta property="og:updated_time" content="2016-03-13T08:13:41.652Z">
+final关键字final表示“不可改变”或者“终态”的意思，可以用来修饰非抽象类、非抽象类成员方法和变量。
+final类
+final类不能被继承，这就意味着final类的成员方法没有机会被覆盖；final类中的方法默认时final的。
+通常，在进行类设计时，如果不需要子类，类的实现细节不需要改变，并且不会再被扩展，那">
+<meta property="og:updated_time" content="2016-03-24T10:58:48.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="^M字符常用处理方案">
-<meta name="twitter:description" content="通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为\r\n，而Linux下为\n。为此，本文提出几个^M字符常用处理方案。
+<meta name="twitter:title" content="Java进击：static与final">
+<meta name="twitter:description" content="本文对Java中static与final关键字的使用做出了总结，以作备忘。
 
-vi替换
-使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如
-:%s/^M//g
-这里是将^M字符删除（用空字符替换），也可以将其替换为回车：
-:%s/^M/\r/g">
+final关键字final表示“不可改变”或者“终态”的意思，可以用来修饰非抽象类、非抽象类成员方法和变量。
+final类
+final类不能被继承，这就意味着final类的成员方法没有机会被覆盖；final类中的方法默认时final的。
+通常，在进行类设计时，如果不需要子类，类的实现细节不需要改变，并且不会再被扩展，那">
   
   
     <link rel="icon" href="/img/favicon.ico">
@@ -205,11 +202,11 @@ vi替换
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-M字符常用处理方案" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java进击：static与final" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/13/M字符常用处理方案/" class="article-date">
-  	<time datetime="2016-03-13T08:11:33.000Z" itemprop="datePublished">2016-03-13</time>
+      <a href="/2016/03/24/Java进击：static与final/" class="article-date">
+  	<time datetime="2016-03-24T10:56:19.000Z" itemprop="datePublished">2016-03-24</time>
 </a>
     </div>
   
@@ -222,7 +219,7 @@ vi替换
         
   
     <h1 class="article-title" itemprop="name">
-      ^M字符常用处理方案
+      Java进击：static与final
     </h1>
   
 
@@ -231,7 +228,7 @@ vi替换
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符处理/">字符处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找替换/">查找替换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java进击/">Java进击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用概念/">常用概念</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
 	</div>
 
         
@@ -243,27 +240,42 @@ vi替换
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p><strong>通常Windows下文件迁移到Linux下时，会在文件中出现^M这样的字符。这是由于两个不同系统下的回车定义不同导致的：Windows下为<code>\r\n</code>，而Linux下为<code>\n</code>。为此，本文提出几个^M字符常用处理方案。</strong></p>
+<p><strong>本文对Java中static与final关键字的使用做出了总结，以作备忘。</strong></p>
 </blockquote>
-<p><strong>vi替换</strong></p>
-<p>使用vi打开需要替换的文件，采用替换命令将其替换为指定字符，如</p>
-<pre><code>:%s/^M//g
-</code></pre><p>这里是将^M字符删除（用空字符替换），也可以将其替换为回车：</p>
-<pre><code>:%s/^M/\r/g
+<h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a><strong>final关键字</strong></h4><p>final表示“不可改变”或者“终态”的意思，可以用来修饰非抽象类、非抽象类成员方法和变量。</p>
+<p><strong>final类</strong></p>
+<pre><code>final类不能被继承，这就意味着final类的成员方法没有机会被覆盖；final类中的方法默认时final的。
+通常，在进行类设计时，如果不需要子类，类的实现细节不需要改变，并且不会再被扩展，那么该类就可以被设计成final类。
 </code></pre><a id="more"></a>
-<p><em>注：</em>这里的^M字符并不是由^字符和M字符组成的，也不能够采用复制的方法。需要同时按住<code>Ctrl+V+M</code>，才能够打出该字符。<br>这种方法的缺陷就是一次只能够处理一个文件，如果是大量的文件就比较麻烦了。为此推荐采用以下两种方法。</p>
-<p><strong>sed替换</strong></p>
-<pre><code>#sed -e &apos;s/^M//g&apos; filename
-</code></pre><p>该命令是将文件名为filename的文件中^M字符替换为空字符。这里的filename文件可以是多个，也可以采用通配符，比如：</p>
-<pre><code>#sed -e &apos;s/^M//g&apos; *txt
-</code></pre><p>该命令就是将当前文件夹下所有的txt后缀文件中^M字符替换为空字符。采用这种方式可以实现多个文件的同时转换。</p>
-<p><strong>dos2unix命令替换</strong></p>
-<pre><code>#dos2unix file1 file2 file3
-</code></pre><p>将多个文件转换。上述命令是在原有文件基础上改的，如果需要保存原有文件格式，那么就需要添加相应属性，比如：</p>
-<pre><code>#dos2unix -n sourceFile desFile
-</code></pre><p>上述命令是将sourceFile转换为desFile，sourceFile格式不变，desFile为目标格式文件。</p>
-<pre><code>#dos2unix -k filename
-</code></pre><p><code>-k</code>参数不改变原有文件时间戳。</p>
+<p><strong>final方法</strong></p>
+<pre><code>final修饰的方法也被称为最终方法，即不允许被子类重新定义，也不允许被覆盖。也就是说，当一个类中存在着不允许被其子类覆盖的某个方法，那么这个方法就可以声明为final方法。但需要注意的是，不能被覆盖并不意味着不能被重载。
+使用final方法通常有两个好处：第一，防止任何继承类修改现有方法的实现过程；第二，编译器在处理final方法时，会将其转入内嵌机制，从而大大提高执行效率。
+</code></pre><p><strong>final变量</strong></p>
+<pre><code>final变量表示常量，也就是说final修饰的成员变量，一旦赋值，将无法改变。
+需要注意的是，final变量的定义是允许先定义而不给初值的，这种变量成为final空白。但必须保证其在使用前初始化。这种机制的存在为final的使用提供了很大的灵活性：可以保证类中的final变量根据对象的不同而有所不同，却又能够保证其不变的特性。
+final变量通常也会加static关键字，这样实际上就是充分利用二者的特性来减少内存空间的使用。
+</code></pre><p><strong>小结：我们可以看出final修饰的属性本质的特征就是恒定不变。</strong></p>
+<h4 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a><strong>static关键字</strong></h4><p>static表示“全局”或“静态”的意思，可以用来修饰成员变量和成员方法，也可以形成静态代码块。<em>这里需要注意的是，在Java中是没有全局变量的概念的。</em></p>
+<p><strong>static变量（静态变量）</strong></p>
+<pre><code>Java中变量按照是否被static修饰可以分为静态变量和实例变量，静态变量也叫作类变量。
+静态变量在内存中只有一个拷贝，这是因为JVM在加载类的过程中，只为静态变量分配一次内存，也就是说无论是该类创建了多少个对象，甚至是不创建对象，该数据区域均存在且唯一，这种机制可以大大节省内存空间。静态变量可以用类名直接访问，也可以通过对象访问，事实上，也仅仅是访问方式的不同，而访问对象、访问结果均相同。
+静态变量并非是不可改变的，相反的是，静态变量一经改变，其值将会在所有对象中随之改变。
+</code></pre><p><strong>static方法（静态方法）</strong></p>
+<pre><code>与静态变量相同，静态方法在内存中也只有一个拷贝，不与该类的任何对象相关联，可以通过类名直接调用，也可以通过实例调用。
+不同的是，静态方法不能直接访问所属类的实例变量和实例方法，也不能采用this和super关键字，它只能访问所属类的静态成员变量和静态方法；由于独立于任何实例这一特点，静态方法必须被实现，而不能够是抽象的abstract。
+事实上，main函数可以有效地帮助我们理解静态方法。类中存在的main函数均是被static修饰的，也就是静态方法，JVM在运行main函数的时候，是直接调用的，而不是创建实例。
+</code></pre><p><strong>static代码块（静态代码块）</strong></p>
+<pre><code>静态代码块是独立于类成员的static语句块，可以有多个，位置也可以任意，但需要说明的是，静态代码块不能存在于任何的方法体内。
+JVM在加载类的过程中会执行静态代码块；对于多个静态代码块，JVM会按照它们在类中出现的先后顺序依次执行。需要强调的是，所有的静态代码块只会被执行一次。
+</code></pre><p><strong>小结：我们可以看出，无论是static修饰方法，变量还是代码块，其共同特点就是被static修饰的属性在内存中均只有一个拷贝，不与任何实例相关，这就是static关键字的最本质作用。</strong></p>
+<h4 id="final与static区别"><a href="#final与static区别" class="headerlink" title="final与static区别"></a><strong>final与static区别</strong></h4><ol>
+<li><p>首先我们需要明白的是：static与final事实上没有啥直接关系。</p>
+</li>
+<li><p>final可以修饰类，而static只能修饰成员方法与变量。</p>
+</li>
+<li><p>看到最多的两者联系可能就是在于final与static通常联用，二者联用产生的效果可以简单地理解为“全局”，目的就是为了减少内存空间的使用。</p>
+</li>
+</ol>
 
       
     </div>
@@ -273,18 +285,9 @@ vi替换
     
 <nav id="article-nav">
   
-    <a href="/2016/03/13/Ubuntu下PHP开发环境搭建/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Ubuntu下PHP开发环境搭建
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/12/jQuery-Mobile动态刷新/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jQuery Mobile动态刷新</div>
+    <a href="/2016/03/23/Linux-PROMPT-COMMAND/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux PROMPT_COMMAND</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -300,7 +303,7 @@ vi替换
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="M字符常用处理方案" data-title="^M字符常用处理方案" data-url="http://yoursite.com/2016/03/13/M字符常用处理方案/"></div>
+	<div class="ds-thread" data-thread-key="Java进击：static与final" data-title="Java进击：static与final" data-url="http://yoursite.com/2016/03/24/Java进击：static与final/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 11.67px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 13.33px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.67px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.67px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 13.33px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.33px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.67px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 13.33px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.67px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.67px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 11.67px;">移动开发</a> <a href="/tags/语法/" style="font-size: 16.67px;">语法</a>
+						<a href="/tags/Django/" style="font-size: 11.43px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 14.29px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.43px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.43px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.86px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.57px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 15.71px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 14.29px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.43px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.43px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 14.29px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 11.43px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.14px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,73 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Java进击：static与final" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/24/Java进击：static与final/" class="article-date">
+  	<time datetime="2016-03-24T10:56:19.000Z" itemprop="datePublished">2016-03-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/24/Java进击：static与final/">Java进击：static与final</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>本文对Java中static与final关键字的使用做出了总结，以作备忘。</strong></p>
+</blockquote>
+<h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a><strong>final关键字</strong></h4><p>final表示“不可改变”或者“终态”的意思，可以用来修饰非抽象类、非抽象类成员方法和变量。</p>
+<p><strong>final类</strong></p>
+<pre><code>final类不能被继承，这就意味着final类的成员方法没有机会被覆盖；final类中的方法默认时final的。
+通常，在进行类设计时，如果不需要子类，类的实现细节不需要改变，并且不会再被扩展，那么该类就可以被设计成final类。
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java进击/">Java进击</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用概念/">常用概念</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/24/Java进击：static与final/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Linux-PROMPT-COMMAND" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1429,70 +1496,10 @@ WSGIProcessGroup example.com
 
 
   
-    <article id="post-cordova图片上传" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/03/03/cordova图片上传/" class="article-date">
-  	<time datetime="2016-03-03T11:38:40.000Z" itemprop="datePublished">2016-03-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/03/cordova图片上传/">cordova图片上传</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>手机应用开发，难免会需要用到图片。本文主要介绍如何通过cordova（PhoneGap）调用摄像头及访问相册上传图片，并将图片上传至服务器。本文所有代码在cordova4.3.0测试成功。</p>
-</blockquote>
-<p><strong>本文完整代码示例可参照<a href="https://github.com/yzhou9071">Github</a>。</strong></p>
-<h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a><strong>功能需求</strong></h3><p>选择本地图片，也可以通过相机拍摄图片，然后上传至服务器，并在当前页面中显示出来。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova/">cordova</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片上传/">图片上传</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动开发/">移动开发</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/03/cordova图片上传/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 </div>

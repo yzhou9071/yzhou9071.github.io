@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 11.43px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 14.29px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.43px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.43px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.86px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.57px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 15.71px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 14.29px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.43px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.43px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 14.29px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 11.43px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.14px;">语法</a>
+						<a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Django/" style="font-size: 11.43px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 14.29px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.43px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.43px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.86px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.57px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 15.71px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 14.29px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.43px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.43px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 14.29px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 12.86px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.14px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,69 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Android-Camera2介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/25/Android-Camera2介绍/" class="article-date">
+  	<time datetime="2016-03-25T02:36:13.000Z" itemprop="datePublished">2016-03-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/25/Android-Camera2介绍/">Android: Camera2介绍</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>自5.0（API Level 21）开始，新的api camera2引入。本文主要对其结构以及类关系进行梳理，为后面调用摄像头录像做逻辑梳理。具体方法属性，请参照<a href="http://developer.android.com/reference/android/hardware/camera2/CameraManager.html">官方文档</a>。</strong></p>
+</blockquote>
+<h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a><strong>背景介绍</strong></h3><p>正如导言中所说，从API 21开始，原来的camera API弃用，转而推荐使用新增的camera2 API。相对来说，由于API架构的变化，提高了开发者使用难度。<br>对于以前的Camera API来说，对相机的手动控制需要更改系统才能够实现，并且API很不友好。Camera之前的功能如下：</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动开发/">移动开发</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/25/Android-Camera2介绍/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Java进击：static与final" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1413,71 +1476,6 @@ WSGIProcessGroup example.com
       
         <p class="article-more-link">
           <a  href="/2016/03/05/Git搭建及常用命令/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-简明Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/04/简明Markdown语法/" class="article-date">
-  	<time datetime="2016-03-04T02:37:44.000Z" itemprop="datePublished">2016-03-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/04/简明Markdown语法/">简明Markdown语法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>Markdown本着易写易读的宗旨变得越来越流行，尤其是对广大码农来说，更是必不可少。希望在本文的介绍下，能在看完博客的同时就可以完成Markdown的大部分任务。</p>
-<p>详细教程可参考：<a href="http://wowubuntu.com/markdown/">Markdown语法说明</a></p>
-<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a><strong>符号</strong></h3><ul>
-<li><em>Markdown符号</em> ： *，-，+ 这三个符号的效果作用相同</li>
-<li><em>\</em> ： 转义字符，可用来转义Markdown中符号</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语法/">语法</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/04/简明Markdown语法/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

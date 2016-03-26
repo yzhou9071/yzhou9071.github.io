@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android 调用摄像头录像 | 冷饭博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="近期想做一款直播软件，思路是通过手机app实时传输视频至服务器，然后通过网页实时播放。本文主要是对Google Samples中的android-Camera2Video解读，源码可以直接参考Github。有不到之处敬请见谅。
+
+功能描述这个例子主要实现了：
+
+调用摄像头，并将其在屏幕上预览；
+拍摄视频，并保存。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 调用摄像头录像">
+<meta property="og:url" content="http://yoursite.com/2016/03/26/Android-调用摄像头录像/index.html">
+<meta property="og:site_name" content="冷饭博客">
+<meta property="og:description" content="近期想做一款直播软件，思路是通过手机app实时传输视频至服务器，然后通过网页实时播放。本文主要是对Google Samples中的android-Camera2Video解读，源码可以直接参考Github。有不到之处敬请见谅。
+
+功能描述这个例子主要实现了：
+
+调用摄像头，并将其在屏幕上预览；
+拍摄视频，并保存。">
+<meta property="og:updated_time" content="2016-03-26T07:51:41.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 调用摄像头录像">
+<meta name="twitter:description" content="近期想做一款直播软件，思路是通过手机app实时传输视频至服务器，然后通过网页实时播放。本文主要是对Google Samples中的android-Camera2Video解读，源码可以直接参考Github。有不到之处敬请见谅。
+
+功能描述这个例子主要实现了：
+
+调用摄像头，并将其在屏幕上预览；
+拍摄视频，并保存。">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <!--
+<div class="overlay"></div> 
+-->
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Keen Zhou</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								
+									<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+								
+					        
+								
+									<a class="mail" target="_blank" href="mailto:yzhou9071@gmail.com" title="mail">mail</a>
+								
+					        
+								
+									<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+								
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 11.43px;">Android</a> <a href="/tags/Django/" style="font-size: 11.43px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 14.29px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 14.29px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.43px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.43px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.86px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.57px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 10px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 15.71px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 14.29px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.43px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.43px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 14.29px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 14.29px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.14px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme" style="color:white;">
+					
+					
+						冷饭<br>
+					
+						野生程序猿<br>
+					
+						www.yzhou9071.com<br>
+					
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Keen Zhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Keen Zhou</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/yzhou9071@gmail.com" title="mail">mail</a>
+			        
+						<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android-调用摄像头录像" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/26/Android-调用摄像头录像/" class="article-date">
+  	<time datetime="2016-03-26T07:48:22.000Z" itemprop="datePublished">2016-03-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 调用摄像头录像
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动开发/">移动开发</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>近期想做一款直播软件，思路是通过手机app实时传输视频至服务器，然后通过网页实时播放。本文主要是对Google Samples中的android-Camera2Video解读，源码可以直接参考<a href="https://github.com/googlesamples/android-Camera2Video" target="_blank" rel="external">Github</a>。有不到之处敬请见谅。</strong></p>
+</blockquote>
+<h3 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a><strong>功能描述</strong></h3><p>这个例子主要实现了：</p>
+<ul>
+<li>调用摄像头，并将其在屏幕上预览；</li>
+<li>拍摄视频，并保存。</li>
+</ul>
+<a id="more"></a>
+<p>界面也很简单，屏幕上方就是一个画面预览的TextureView，下方是一个Record按钮。</p>
+<p>这里不多说，我们主要通过解析Camera2VideoFragment类的代码来了解下如何调用摄像头，如何预览，以及如何拍摄视频。</p>
+<h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a><strong>功能实现</strong></h3><p>我们首先从SurfaceTextureListener开始说起。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * &#123;@link TextureView.SurfaceTextureListener&#125; handles several lifecycle events on a</span><br><span class="line">   * &#123;@link TextureView&#125;.</span><br><span class="line">   */</span><br><span class="line">private TextureView.SurfaceTextureListener mSurfaceTextureListener</span><br><span class="line">               = new TextureView.SurfaceTextureListener() &#123;</span><br><span class="line">     @Override</span><br><span class="line">     public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture,</span><br><span class="line">                                                                 int width, int height) &#123;</span><br><span class="line">          openCamera(width, height);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     @Override</span><br><span class="line">     public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture,</span><br><span class="line">                                                                 int width, int height) &#123;</span><br><span class="line">          configureTransform(width, height);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     @Override</span><br><span class="line">     public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) &#123;</span><br><span class="line">          return true;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     @Override</span><br><span class="line">     public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) &#123;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这个匿名类表示了TextureView的生命周期，我们可以看到，实际用到的是两个：</p>
+<ol>
+<li>onSurfaceTextureAvailable，在TextureView初始化时会调用；</li>
+<li>onSurfaceTextureSizeChanged会在TextureView发生变动的时候调用。</li>
+</ol>
+<p>在TextureView初始化之后，就调用openCamera方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* Tries to open a &#123;@link CameraDevice&#125;. The result is listened by `mStateCallback`.</span><br><span class="line">*/</span><br><span class="line">private void openCamera(int width, int height) &#123;</span><br><span class="line">     //这个方法实际上就是检测VIDEO_PERMISSIONS数组中的权限是否授予了</span><br><span class="line">     if (!hasPermissionsGranted(VIDEO_PERMISSIONS)) &#123;</span><br><span class="line">          requestVideoPermissions();</span><br><span class="line">          return;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     //这里需要检测Activity是否处于活跃状态</span><br><span class="line">     final Activity activity = getActivity();</span><br><span class="line">     if (null == activity || activity.isFinishing()) &#123;</span><br><span class="line">          return;</span><br><span class="line">     &#125;</span><br><span class="line">     //获取CameraManager对象，该对象居于统领地位，统管所有的CameraDevice</span><br><span class="line">     CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);</span><br><span class="line">     try &#123;</span><br><span class="line">          Log.d(TAG, &quot;tryAcquire&quot;);</span><br><span class="line">          //这里就是验证请求资源是否被占有，tryAcquire就是尝试着从信号量中获取一个许可</span><br><span class="line">          //由于mCameraOpenCloseLock声明时初始许可数为1，这就意味着该资源同一时间只能被一个线程占有</span><br><span class="line">          //关于Semaphore可以参考[这篇博客](http://blog.csdn.net/java2000_wl/article/details/23556859)。</span><br><span class="line">          if (!mCameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) &#123;</span><br><span class="line">     throw new RuntimeException(&quot;Time out waiting to lock camera opening.&quot;);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          //通过CameraManager获取cameraId，这是最关键的一步，只有获取了cameraId后面才知道要申请哪个CameraDevice</span><br><span class="line">          String cameraId = manager.getCameraIdList()[0];</span><br><span class="line"></span><br><span class="line">          //通过cameraId获取CameraDevice相关设备属性信息</span><br><span class="line">          CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);</span><br><span class="line">          StreamConfigurationMap map = characteristics</span><br><span class="line">                              .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);</span><br><span class="line">          </span><br><span class="line">          //这两个方法就是设置相机预览以及录像的尺寸了</span><br><span class="line">          mVideoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder.class));</span><br><span class="line">          mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),</span><br><span class="line">                                                                 width, height, mVideoSize);</span><br><span class="line"></span><br><span class="line">          //这里是在根据横屏还是竖屏来调整TextureView的显示大小</span><br><span class="line">          int orientation = getResources().getConfiguration().orientation;</span><br><span class="line">          if (orientation == Configuration.ORIENTATION_LANDSCAPE) &#123;</span><br><span class="line">               mTextureView.setAspectRatio(mPreviewSize.getWidth(), mPreviewSize.getHeight());</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">               mTextureView.setAspectRatio(mPreviewSize.getHeight(), mPreviewSize.getWidth());</span><br><span class="line">          &#125;</span><br><span class="line">          configureTransform(width, height);</span><br><span class="line">          </span><br><span class="line">          //初始化[MediaRecorder](http://www.cnblogs.com/plokmju/p/android_MediaRecorder.html)</span><br><span class="line">          mMediaRecorder = new MediaRecorder();</span><br><span class="line">          </span><br><span class="line">          //准备了这么多，终于可以进入正题了</span><br><span class="line">          //CameraManager通过cameraId打开摄像头，同时将结果托管于StateCallBack</span><br><span class="line">          manager.openCamera(cameraId, mStateCallback, null);</span><br><span class="line">     &#125; catch (CameraAccessException e) &#123;</span><br><span class="line">          Toast.makeText(activity, &quot;Cannot access the camera.&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">          activity.finish();</span><br><span class="line">     &#125; catch (NullPointerException e) &#123;</span><br><span class="line">          ErrorDialog.newInstance(getString(R.string.camera_error))</span><br><span class="line">                       .show(getChildFragmentManager(), FRAGMENT_DIALOG);</span><br><span class="line">     &#125; catch (InterruptedException e) &#123;</span><br><span class="line">          throw new RuntimeException(&quot;Interrupted while trying to lock camera opening.&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法主要是尝试打开CameraDevice，注意这里用的是尝试。主要原因有两个</p>
+<ol>
+<li>在打开CameraDevice时要做权限验证；</li>
+<li>CameraDevice做了单线程访问限制，同一时间只能有一个线程占有，因此请求不一定会通过。</li>
+</ol>
+<p>CameraDevice开启后，其状态变化都会被StateCallBack捕捉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * &#123;@link CameraDevice.StateCallback&#125; is called when &#123;@link CameraDevice&#125; changes its status.</span><br><span class="line">   */</span><br><span class="line">private CameraDevice.StateCallback mStateCallback = new CameraDevice.StateCallback() &#123;</span><br><span class="line">     //onOpened是在CameraDevice启动成功后调用</span><br><span class="line">     @Override</span><br><span class="line">     public void onOpened(CameraDevice cameraDevice) &#123;</span><br><span class="line">          mCameraDevice = cameraDevice;</span><br><span class="line">          //startPreview方法实现了将摄像头捕捉图像显示在TextureView上</span><br><span class="line">          startPreview();</span><br><span class="line">          mCameraOpenCloseLock.release();</span><br><span class="line">          if (null != mTextureView) &#123;</span><br><span class="line">               configureTransform(mTextureView.getWidth(), mTextureView.getHeight());</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     @Override</span><br><span class="line">     public void onDisconnected(CameraDevice cameraDevice) &#123;</span><br><span class="line">          mCameraOpenCloseLock.release();</span><br><span class="line">          cameraDevice.close();</span><br><span class="line">          mCameraDevice = null;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     @Override</span><br><span class="line">     public void onError(CameraDevice cameraDevice, int error) &#123;</span><br><span class="line">          mCameraOpenCloseLock.release();</span><br><span class="line">          cameraDevice.close();</span><br><span class="line">          mCameraDevice = null;</span><br><span class="line">          Activity activity = getActivity();</span><br><span class="line">          if (null != activity) &#123;</span><br><span class="line">               activity.finish();</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里我们可以看出来，在CameraDevice失效后，一定要将资源释放，否则就会导致其他应用无法获取Camera资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * Start the camera preview.</span><br><span class="line">   */</span><br><span class="line">private void startPreview() &#123;</span><br><span class="line">     //可靠性检测，CameraDevice是否开启，TextureView是否初始化，PreviewSize是否调整</span><br><span class="line">     if (null == mCameraDevice || !mTextureView.isAvailable() || null == mPreviewSize) &#123;</span><br><span class="line">          return;</span><br><span class="line">     &#125;</span><br><span class="line">     try &#123;</span><br><span class="line">          //这个函数是预启动MediaRecorder</span><br><span class="line">          //设置输出路径、编码格式等</span><br><span class="line">          //最终要的是要调用prepare函数，MediaRecorder使用前必须完成prepare操作</span><br><span class="line">          setUpMediaRecorder();</span><br><span class="line">          </span><br><span class="line">          SurfaceTexture texture = mTextureView.getSurfaceTexture();</span><br><span class="line">          assert texture != null;</span><br><span class="line">          texture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());</span><br><span class="line"></span><br><span class="line">          //建立CamerCaptureRequest</span><br><span class="line">          mPreviewBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_RECORD);</span><br><span class="line"></span><br><span class="line">          //设置预览目标对象，这里是将TextureView作为目标对象</span><br><span class="line">          List&lt;Surface&gt; surfaces = new ArrayList&lt;Surface&gt;();</span><br><span class="line">          Surface previewSurface = new Surface(texture);</span><br><span class="line">          surfaces.add(previewSurface);</span><br><span class="line">          mPreviewBuilder.addTarget(previewSurface);</span><br><span class="line"></span><br><span class="line">          //设置视频录制目标对象</span><br><span class="line">          Surface recorderSurface = mMediaRecorder.getSurface();</span><br><span class="line">          surfaces.add(recorderSurface);</span><br><span class="line">          mPreviewBuilder.addTarget(recorderSurface);</span><br><span class="line"></span><br><span class="line">          //建立CaptureSession完成设备与CameraDevice关联</span><br><span class="line">          mCameraDevice.createCaptureSession(surfaces, new CameraCaptureSession.StateCallback() &#123;</span><br><span class="line">               //Session启动成功，调用updatePreview方法来完成repeatingRequest</span><br><span class="line">               @Override</span><br><span class="line">               public void onConfigured(CameraCaptureSession cameraCaptureSession) &#123;</span><br><span class="line">                    mPreviewSession = cameraCaptureSession;</span><br><span class="line">                    updatePreview();</span><br><span class="line">               &#125;</span><br><span class="line">               </span><br><span class="line">               //Session建立失败</span><br><span class="line">               @Override</span><br><span class="line">               public void onConfigureFailed(CameraCaptureSession cameraCaptureSession) &#123;</span><br><span class="line">                    Activity activity = getActivity();</span><br><span class="line">                    if (null != activity) &#123;</span><br><span class="line">                         Toast.makeText(activity, &quot;Failed&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    &#125;</span><br><span class="line">               &#125;</span><br><span class="line">     &#125; catch (CameraAccessException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">     &#125; catch (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>startPreview最重要的是建立CaptureSession，并有建立的CaptureSession来完成updatePreview操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * Update the camera preview. &#123;@link #startPreview()&#125; needs to be called in advance.</span><br><span class="line">   */</span><br><span class="line">private void updatePreview() &#123;</span><br><span class="line">     if (null == mCameraDevice) &#123;</span><br><span class="line">          return;</span><br><span class="line">     &#125;</span><br><span class="line">     try &#123;</span><br><span class="line">          setUpCaptureRequestBuilder(mPreviewBuilder);</span><br><span class="line">          HandlerThread thread = new HandlerThread(&quot;CameraPreview&quot;);</span><br><span class="line">          thread.start();</span><br><span class="line">          //完成repeatingRequest，实现无限请求、实时预览</span><br><span class="line">          mPreviewSession.setRepeatingRequest(mPreviewBuilder.build(), null, mBackgroundHandler);</span><br><span class="line">     &#125; catch (CameraAccessException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>updatePreview实际上就是为了完成一个repeatingPreview的操作，无限的请求，从而实现实时预览。</p>
+<p>至此，我们已经完成了实时预览部分的功能。接下来我们分析录像部分。</p>
+<p>录像的功能需要按钮触发实现，本例中，将其绑定在Record按钮上，通过对其onClick事件监听，完成事件触发。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onClick(View view) &#123;</span><br><span class="line">     switch (view.getId()) &#123;</span><br><span class="line">          case R.id.video: &#123;</span><br><span class="line">               if (mIsRecordingVideo) &#123;</span><br><span class="line">                    stopRecordingVideo();</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                    startRecordingVideo();</span><br><span class="line">               &#125;</span><br><span class="line">               break;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过按钮的id获取点击事件，并设置状态量以便了解开启还是关闭录像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private void startRecordingVideo() &#123;</span><br><span class="line">     try &#123;</span><br><span class="line">          // 更新按钮显示以及按钮点击状态量</span><br><span class="line">          mButtonVideo.setText(R.string.stop);</span><br><span class="line">          mIsRecordingVideo = true;</span><br><span class="line"></span><br><span class="line">          // 开始录制</span><br><span class="line">          // 这里需要注意的是，在调用start方法前必须先调用prepare，这个在之前也有提到过</span><br><span class="line">          mMediaRecorder.start();</span><br><span class="line">     &#125; catch (IllegalStateException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们再次点击Record按钮时，将停止录像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">private void stopRecordingVideo() &#123;</span><br><span class="line">     // 同样地，更新按钮显示以及状态量</span><br><span class="line">     mIsRecordingVideo = false;</span><br><span class="line">     mButtonVideo.setText(R.string.record);</span><br><span class="line">     </span><br><span class="line">     // 停止录制</span><br><span class="line">     mMediaRecorder.stop();</span><br><span class="line">     // 将MediaRecorder重置</span><br><span class="line">     mMediaRecorder.reset();</span><br><span class="line">     Activity activity = getActivity();</span><br><span class="line">     if (null != activity) &#123;</span><br><span class="line">          Toast.makeText(activity, &quot;Video saved: &quot; + getVideoFile(activity),</span><br><span class="line">                                   Toast.LENGTH_SHORT).show();</span><br><span class="line">     &#125;</span><br><span class="line">     startPreview();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里可能存在着疑问，在录像结束时，不应该完成保存等一系列动作么，为什么这里没有。事实上这些动作是在录制过程中完成的，而且相关的配置信息也在prepare阶段完成了。因此这里只需要将MediaRecorder结束就好了。</p>
+<p>在MediaRecorder结束后，又调用了startPreview方法，这就又从预览开始，也可以再次进行录制，相当于真正的重置了。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h3><p>结合代码的分析，我们对如何通过Camera2调用摄像头有了新的认识，也可以开始着手做了。我将会在<a href="https://github.com/googlesamples/android-Camera2Video" target="_blank" rel="external">Camera2Video</a>基础上直接开始改，并托管到<a href="https://github.com/yzhou9071" target="_blank" rel="external">Github</a>上，敬请期待。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/25/Android-Camera2介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android: Camera2介绍</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android-调用摄像头录像" data-title="Android 调用摄像头录像" data-url="http://yoursite.com/2016/03/26/Android-调用摄像头录像/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Keen Zhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

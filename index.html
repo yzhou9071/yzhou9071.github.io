@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/Django/" style="font-size: 11.25px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 15px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 13.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.25px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.25px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.75px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 11.25px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.25px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 15px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.25px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.25px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 13.75px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 13.75px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.5px;">语法</a>
+						<a href="/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/tags/Django/" style="font-size: 11.25px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 15px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 13.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.25px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.25px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.75px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 11.25px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.25px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 15px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.25px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.25px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 13.75px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 15px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.5px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,70 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Android-异步消息处理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/29/Android-异步消息处理/" class="article-date">
+  	<time datetime="2016-03-29T12:00:35.000Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/Android-异步消息处理/">Android: 异步消息处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>对于开发Android来说，个人认为更需要了解多线程，以及异步消息处理机制。本文主要介绍了Android的异步消息处理机制，解释了Looper、Handler、Message在其中扮演的角色以及三者之间的关系。</strong></p>
+</blockquote>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h4><p>首先，我们要明白为什么要做异步消息处理。我们都知道，Android UI是线程不安全的，也就是说，在子线程中（非UI线程）尝试进行UI操作，就会引起程序崩溃。于此，我们通常的做法就是创建一个Message对象，通过Handler将此对象发送出去，之后再Handler的handlerMessage()方法中获取刚刚发送的Message对象，这样在对UI的操作就不会引发程序崩溃了。事实上，这个过程，就是我们需要进一步了解的异步消息处理机制。</p>
+<p>上述过程主要涉及三个部分，分别是Looper、Handler、Message。我们接下来对这三个部分做下深入了解。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动开发/">移动开发</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/29/Android-异步消息处理/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Java进击：多线程" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1414,73 +1478,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/03/10/Storm单机安装及配置/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Apache与mod-wsgi部署Django（二）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/09/Apache与mod-wsgi部署Django（二）/" class="article-date">
-  	<time datetime="2016-03-09T08:50:50.000Z" itemprop="datePublished">2016-03-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/09/Apache与mod-wsgi部署Django（二）/">Apache与mod_wsgi部署Django（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>本文继上篇博客继续翻译Django文档，并且会穿插一些自己在配置部署过程中遇到的问题及解决方案。</strong></p>
-<p><strong>原文地址：<a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/modwsgi/">How to use Django with Apache and mod_wsgi</a></strong></p>
-</blockquote>
-<h4 id="采用mod-wsgi守护进程模式"><a href="#采用mod-wsgi守护进程模式" class="headerlink" title="采用mod_wsgi守护进程模式"></a><strong>采用mod_wsgi守护进程模式</strong></h4><p>本文推荐采用这种模式来运行mod_wsgi。你需要添加可用的<code>WSGIDaemonProcess</code>和<code>WSGIProcessGroup</code>目录，以便创建必要的进程组，并是的Django实例在其上运行。如果你采用这种模式，那么上面的配置需要进一步的修改：不能再采用<code>WSGIPythonPath</code>了，你应该在<code>WSGIPDaemonPeocess</code>中使用<code>python-path</code>参数，比如：</p>
-<pre><code>WSGIDaemonProcess example.com python-path=/path/to/mysite.com:/path/to/venv/lib/python2.7/site-packages
-WSGIProcessGroup example.com
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/09/Apache与mod-wsgi部署Django（二）/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

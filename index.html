@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 12.5px;">Android</a> <a href="/tags/Django/" style="font-size: 11.25px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 15px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 13.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.25px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.25px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.75px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 11.25px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.25px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 15px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.25px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.25px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 13.75px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 15px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.5px;">语法</a>
+						<a href="/tags/Android/" style="font-size: 13.75px;">Android</a> <a href="/tags/Django/" style="font-size: 11.25px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 15px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 13.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.25px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.25px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.75px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 11.25px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.25px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 15px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.25px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.25px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 13.75px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 16.25px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.5px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,69 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Android：-PreferenceFragment介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/30/Android：-PreferenceFragment介绍/" class="article-date">
+  	<time datetime="2016-03-30T08:52:43.000Z" itemprop="datePublished">2016-03-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/30/Android：-PreferenceFragment介绍/">Android： PreferenceFragment介绍</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>Android开发中难免会有选项设置，而通常这一部分的功能相对简单，且开发过程中变动相对频繁。如果通过一个Activity或者Fragment逻辑来维护，显然不合情理。Android专门提供了一个便捷的基类——PreferenceActivity，但在Android3.0后，官方则开始推荐我们使用PreferenceFragment。本文将简单介绍一下PreferenceFragment的使用。</strong></p>
+</blockquote>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a><strong>使用场景</strong></h4><p>某些情况下，我们的程序需要提供一些选项的功能，使得用户可以定制一些东西。比如说，最近在做的视频采集器，我们需要允许用户配置服务器信息，允许用户设置画面清晰度等等。我们来分析一下这个场景，从构思这个采集器到开发现阶段，我们仅仅需要用户配置如上的信息，但随着开发的进展，我们势必会引入其他的相关配置信息，比如选择网络、设置保存路径等等，类似这样的功能我们在产品设计阶段很有可能会忽略，想不到。而对于传统的Activity开发来说，维护这样的一个Activity或者Fragment就意味着大量的点击事件，难度倒放在一边，关键是繁杂。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动开发/">移动开发</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/30/Android：-PreferenceFragment介绍/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Android-异步消息处理" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1414,70 +1477,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/03/11/PhoneGap-Jquery-Mobile白屏问题/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Storm单机安装及配置" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/10/Storm单机安装及配置/" class="article-date">
-  	<time datetime="2016-03-10T13:00:57.000Z" itemprop="datePublished">2016-03-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/10/Storm单机安装及配置/">Storm单机安装及配置</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>本文主要讲解Storm在单机上如何发布Topology，同时为保证阅读流畅性，也会简单的提及到单机安装。</strong></p>
-<p><strong>本文的系统环境为Ubuntu1404，Python版本为2.7.6。</strong></p>
-</blockquote>
-<h3 id="Storm安装"><a href="#Storm安装" class="headerlink" title="Storm安装"></a><strong>Storm安装</strong></h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Storm/">Storm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端相关/">后端相关</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/环境搭建/">环境搭建</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/03/10/Storm单机安装及配置/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

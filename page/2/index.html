@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 13.75px;">Android</a> <a href="/tags/Django/" style="font-size: 11.25px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 15px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 13.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.25px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.25px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.75px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 11.25px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.25px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 15px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.25px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.25px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 13.75px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 16.25px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.5px;">语法</a>
+						<a href="/tags/Android/" style="font-size: 13.75px;">Android</a> <a href="/tags/Django/" style="font-size: 11.25px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Javacript/" style="font-size: 10px;">Javacript</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Java进击/" style="font-size: 15px;">Java进击</a> <a href="/tags/Linux/" style="font-size: 13.75px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Storm/" style="font-size: 10px;">Storm</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/cordova/" style="font-size: 11.25px;">cordova</a> <a href="/tags/jQuery-Mobile/" style="font-size: 11.25px;">jQuery Mobile</a> <a href="/tags/前端相关/" style="font-size: 12.5px;">前端相关</a> <a href="/tags/后端相关/" style="font-size: 18.75px;">后端相关</a> <a href="/tags/图片上传/" style="font-size: 10px;">图片上传</a> <a href="/tags/字符处理/" style="font-size: 11.25px;">字符处理</a> <a href="/tags/常用命令/" style="font-size: 16.25px;">常用命令</a> <a href="/tags/常用概念/" style="font-size: 15px;">常用概念</a> <a href="/tags/教程/" style="font-size: 20px;">教程</a> <a href="/tags/查找替换/" style="font-size: 11.25px;">查找替换</a> <a href="/tags/正则表达式/" style="font-size: 11.25px;">正则表达式</a> <a href="/tags/环境搭建/" style="font-size: 15px;">环境搭建</a> <a href="/tags/移动开发/" style="font-size: 16.25px;">移动开发</a> <a href="/tags/语法/" style="font-size: 17.5px;">语法</a>
 					</div>
 				</section>
 				
@@ -187,6 +187,71 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-PhoneGap-Jquery-Mobile白屏问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/11/PhoneGap-Jquery-Mobile白屏问题/" class="article-date">
+  	<time datetime="2016-03-11T11:49:22.000Z" itemprop="datePublished">2016-03-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/11/PhoneGap-Jquery-Mobile白屏问题/">PhoneGap &amp; jQuery Mobile白屏问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>Phonegap开发时，或者说采用jquery mobile开发时，页面间的跳转切换经常会出现白屏问题。白屏的间歇与手机性能有关，性能高的表现为白屏一闪而过。对于移动开发来说，又不能单纯的考虑高性能手机，适配是王道。那么白屏问题就不得不解决了。看了很多方法，也尝试过很多，不是没有效果就是效果不理想。这里列出来网上常说的几种方法，以及最终采用的折中方法。</strong></p>
+</blockquote>
+<p><strong>jquery mobile官方方法</strong></p>
+<p>Important: Some platforms currently have issues with transitions. We are working on a solution to solve the problem for everyone. If you are experiencing flickers and flashes during or at the end of a transition we suggest the following workaround. Please note that this workaround should be thoroughly tested on the target platform before deployment. This workaround is known to cause performance issues and browser crashes on some platforms, especially Android. Add the following code to your custom css:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.ui-page &#123; -webkit-backface-visibility: hidden; &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova/">cordova</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery-Mobile/">jQuery Mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端相关/">前端相关</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/11/PhoneGap-Jquery-Mobile白屏问题/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Storm单机安装及配置" class="article article-type-post" itemscope itemprop="blogPost">
   

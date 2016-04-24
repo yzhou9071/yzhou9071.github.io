@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Java进击：Java内存区域介绍 | 冷饭博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="开发过程中，经常会遇到栈溢出、堆溢出之类的问题，那么究竟为什么导致了此类问题？堆和栈之类的究竟存储了些什么东西？本文将通过对JVM内存区域的一个介绍，来解释这些问题。
+
+Java执行过程我们都知道，Java程序是交由JVM执行完成的，那么从源代码到执行完成，到底是怎样的一个过程呢？先看个图：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java进击：Java内存区域介绍">
+<meta property="og:url" content="http://yoursite.com/2016/04/24/Java进击：Java内存区域介绍/index.html">
+<meta property="og:site_name" content="冷饭博客">
+<meta property="og:description" content="开发过程中，经常会遇到栈溢出、堆溢出之类的问题，那么究竟为什么导致了此类问题？堆和栈之类的究竟存储了些什么东西？本文将通过对JVM内存区域的一个介绍，来解释这些问题。
+
+Java执行过程我们都知道，Java程序是交由JVM执行完成的，那么从源代码到执行完成，到底是怎样的一个过程呢？先看个图：">
+<meta property="og:image" content="http://yoursite.com/images/jvm_compile.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jvm_data_area.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jvm_stack.jpg">
+<meta property="og:updated_time" content="2016-04-24T07:48:22.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java进击：Java内存区域介绍">
+<meta name="twitter:description" content="开发过程中，经常会遇到栈溢出、堆溢出之类的问题，那么究竟为什么导致了此类问题？堆和栈之类的究竟存储了些什么东西？本文将通过对JVM内存区域的一个介绍，来解释这些问题。
+
+Java执行过程我们都知道，Java程序是交由JVM执行完成的，那么从源代码到执行完成，到底是怎样的一个过程呢？先看个图：">
+<meta name="twitter:image" content="http://yoursite.com/images/jvm_compile.jpg">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <!--
+<div class="overlay"></div> 
+-->
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Keen Zhou</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+		
+
+		<br>
+		<span class="post-count" style="color:#ffffff">总字数：54.1k</span>
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								
+									<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+								
+					        
+								
+									<a class="mail" target="_blank" href="mailto:yzhou9071@gmail.com" title="mail">mail</a>
+								
+					        
+								
+									<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+								
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme" style="color:white;">
+					
+					
+						冷饭<br>
+					
+						野生程序猿<br>
+					
+						www.yzhou9071.com<br>
+					
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Keen Zhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Keen Zhou</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/yzhou9071@gmail.com" title="mail">mail</a>
+			        
+						<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Java进击：Java内存区域介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/24/Java进击：Java内存区域介绍/" class="article-date">
+  	<time datetime="2016-04-24T07:43:03.000Z" itemprop="datePublished">2016-04-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java进击：Java内存区域介绍
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>开发过程中，经常会遇到栈溢出、堆溢出之类的问题，那么究竟为什么导致了此类问题？堆和栈之类的究竟存储了些什么东西？本文将通过对JVM内存区域的一个介绍，来解释这些问题。</strong></p>
+</blockquote>
+<h3 id="Java执行过程"><a href="#Java执行过程" class="headerlink" title="Java执行过程"></a><strong>Java执行过程</strong></h3><p>我们都知道，Java程序是交由JVM执行完成的，那么从源代码到执行完成，到底是怎样的一个过程呢？先看个图：</p>
+<a id="more"></a>
+<center><br><img src="/images/jvm_compile.jpg" alt="Java执行过程"><br></center>
+
+<p>从上图我们可以看出，源代码首先由Java编译器编译成class文件，class文件就是一个字节码文件；之后就是大家都熟悉的类加载过程，这个过程加载的是字节码文件；加载完成后，程序由JVM执行引擎执行。这个过程就是整个懂源代码到执行的一个过程。这个过程中，可以说所用到的数据与相关信息，均由JVM保存、管理，而这段空间通常就是指运行时数据区，也就是我们常说的JVM内存。</p>
+<h3 id="运行时数据区划分"><a href="#运行时数据区划分" class="headerlink" title="运行时数据区划分"></a><strong>运行时数据区划分</strong></h3><p>本文主要介绍的就是“运行时数据区”这个模块，这个模块包括了所有运行时所需要的数据及相关信息，主要包括程序计数器（Program Counter Register）、栈（Stack）、堆（Heap）、本地方法栈（Native Method Stack）、方法区（Method Area），如图：</p>
+<center><br><img src="/images/jvm_data_area.jpg" alt="运行时数据划分"><br></center>
+
+<p>上面所说的划分只是在JVM规范中规定的运行时数据区应该包括的部分，但实际上并没有规定具体如何实现，这也是不同的虚拟机厂商多少有些不同的原因。</p>
+<h3 id="JVM内存数据存储"><a href="#JVM内存数据存储" class="headerlink" title="JVM内存数据存储"></a><strong>JVM内存数据存储</strong></h3><p>上面既然说了运行时数据区包括的部分，那么我们接下来就得说说每个部分到底是干嘛的？保存了那些数据？</p>
+<h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a><strong>程序计数器</strong></h4><p>汇编中，程序计数器是指CPU寄存器，保存的是当前的执行指令地址。当CPU执行当前指令时，需要从程序计数器中取出当前执行指令的指令地址，从而根据地址获取指令；同时程序计数器自动加1或者转移指针至下一条指令，以此循环直至所有指令完成。</p>
+<p>这里所说的程序计数器并不意味着物理概念上的CPU寄存器，但在逻辑上其功能与上述相同。JVM中，多线程以线程为单位轮流切换获取CPU执行时间，也就是说，在同一时刻，CPU只会执行一条线程中的指令。为了保证每个线程在切换后仍旧能够恢复到切换之前的指令执行位置，这就需要每个线程独有一个程序计数器，从而保证线程执行互不干扰且不影响正常的执行顺序。从这里我们可以看出，程序计数器对于线程来说是私有的，一个线程对应一个程序计数器。</p>
+<p>程序计数器中存储的数据所占的空间大小不会随程序执行而发生变化，因此，程序计数器是不会发生内存溢出问题的。</p>
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a><strong>栈</strong></h4><p>在我们执行递归程序过程中，经常会发生StackOverFlow的问题，这就是栈溢出引发的异常。为什么会发生栈溢出呢？</p>
+<p>栈中存放的是一个个栈帧，而每个栈帧对应着一个被调用的方法，也就是说，栈实际上保存的是关于方法的相关数据。每个栈帧存储着局部变量表、操作数栈、指向当前方法所属类的运行时常量池的引用、方法返回地址以及一些额外的附加信息（如图）。当一个方法被执行时，JVM就会在栈中创建一个栈帧，将上述对应的信息写入该栈帧中；当方法执行完毕后，该栈帧就会出栈，也就是说当前执行的方法对应的栈帧永远处于栈顶部。这个过程是JVM管理的，所以说栈的空间是不需要程序员操心的。这个过程也完全可以解释递归过程为什么会导致栈溢出了。</p>
+<center><br><img src="/images/jvm_stack.jpg" alt="Java栈"><br></center>
+
+<p>这里还需要说明一下栈帧中存储的数据具体含义：</p>
+<ul>
+<li><strong>局部变量表：</strong>方法中的局部变量，包括方法生命的非静态变量以及函数形参；局部变量表大小在编译器阶段就可以确定大小了，因此在程序执行期间局部变量表大小是不变的；</li>
+<li><strong>操作数栈：</strong>程序中的所有计算过程都是借助于操作数栈完成；</li>
+<li><strong>指向运行时常量池的引用：</strong>执行过程中可能会用到类中的常量；</li>
+<li><strong>方法返回地址：</strong>方法执行结束需要返回之前调用的地方；</li>
+</ul>
+<p>和程序计数器一样，由于每个线程正在执行的方法不同，因此每个线程都会有私有的栈，互不干扰。</p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a><strong>堆</strong></h4><p>Java中的堆是用来存储对象本身以及数组的，当然，数组的引用还是存放在栈中的，这一点需要明确。与C/C++的不同，由于Java垃圾回收机制的存在，程序员也不需要考虑空间释放的问题；同时，由于频繁操作变动，也就意味着这部分空间将是垃圾回收管理的重点区域。</p>
+<p>这样我们也可以理解为什么会发生堆溢出问题了。程序执行过程中创建了大量的对象或者数组，并且频繁调用使用，使得垃圾收集器来不及回收这些空间，就会导致内存溢出问题。</p>
+<p>需要强调的是，堆是所有线程共享的，这就意味着JVM中只会存在一个堆。</p>
+<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a><strong>方法区</strong></h4><p>方法区中存放着每个类的信息（类名、方法信息、字段信息）、静态变量、常量以及编译后的代码等。</p>
+<p>对于方法区来说，比较重要的部分就是运行时常量池，更多的情况下，是类和接口在加载到JVM后，就会创建对应的运行时常量池，同时，在运行期间也可以将新的常量加入运行时常量池中。这一概念我们经常在String类中见到，String类中所说的常量池就是指这一部分空间。</p>
+<p>方法区同样是被线程共享的区域，与堆一样，JVM中只会存在一个方法区。需要说明的是，在JVM规范中，并没有强制要求方法区实现垃圾回收机制。</p>
+<h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a><strong>本地方法栈</strong></h4><p>本地方法栈与栈的作用、原理非常相似，区别在于栈是为执行方法服务的，而本地方法栈是为执行本地方法服务的。所谓的本地方法实际上就是由其他语言编写，编译成与处理器相关的机器代码；本地方法常以动态链接库的形式保存，与平台相关。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/24/Flume单机安装及测试/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Flume单机安装及测试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/31/Mac安装Homebrew/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac安装Homebrew</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Java进击：Java内存区域介绍" data-title="Java进击：Java内存区域介绍" data-url="http://yoursite.com/2016/04/24/Java进击：Java内存区域介绍/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Keen Zhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

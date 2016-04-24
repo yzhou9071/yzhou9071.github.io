@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Java进击：字符串 | 冷饭博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="字符串是任何一个语言都无法规避的一个问题。在Java中，分别有三个类用于处理字符串，而他们之间的区别也使得很多人云里雾里。本文将主要介绍一下String、StringBuffer、StringBuilder及其异同，以作备忘。
+
+String我们首先需要明确的是，对于Java来说，String并不是一个基本数据类型，实际上它是一个对象。这也是为什么我们经常将String和数组之类的放在一起说的原">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java进击：字符串">
+<meta property="og:url" content="http://yoursite.com/2016/04/24/Java进击：字符串/index.html">
+<meta property="og:site_name" content="冷饭博客">
+<meta property="og:description" content="字符串是任何一个语言都无法规避的一个问题。在Java中，分别有三个类用于处理字符串，而他们之间的区别也使得很多人云里雾里。本文将主要介绍一下String、StringBuffer、StringBuilder及其异同，以作备忘。
+
+String我们首先需要明确的是，对于Java来说，String并不是一个基本数据类型，实际上它是一个对象。这也是为什么我们经常将String和数组之类的放在一起说的原">
+<meta property="og:image" content="http://yoursite.com/images/java_string.jpg">
+<meta property="og:updated_time" content="2016-04-24T07:55:46.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java进击：字符串">
+<meta name="twitter:description" content="字符串是任何一个语言都无法规避的一个问题。在Java中，分别有三个类用于处理字符串，而他们之间的区别也使得很多人云里雾里。本文将主要介绍一下String、StringBuffer、StringBuilder及其异同，以作备忘。
+
+String我们首先需要明确的是，对于Java来说，String并不是一个基本数据类型，实际上它是一个对象。这也是为什么我们经常将String和数组之类的放在一起说的原">
+<meta name="twitter:image" content="http://yoursite.com/images/java_string.jpg">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <!--
+<div class="overlay"></div> 
+-->
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Keen Zhou</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+		
+
+		<br>
+		<span class="post-count" style="color:#ffffff">总字数：54.1k</span>
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								
+									<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+								
+					        
+								
+									<a class="mail" target="_blank" href="mailto:yzhou9071@gmail.com" title="mail">mail</a>
+								
+					        
+								
+									<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+								
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme" style="color:white;">
+					
+					
+						冷饭<br>
+					
+						野生程序猿<br>
+					
+						www.yzhou9071.com<br>
+					
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Keen Zhou</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/keenwolf.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Keen Zhou</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">以梦为马，诗酒趁年华。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yzhou9071" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/yzhou9071@gmail.com" title="mail">mail</a>
+			        
+						<a class="blog" target="_blank" href="http://www.yzhou9071.com" title="blog">blog</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Java进击：字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/24/Java进击：字符串/" class="article-date">
+  	<time datetime="2016-04-24T07:52:35.000Z" itemprop="datePublished">2016-04-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java进击：字符串
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><strong>字符串是任何一个语言都无法规避的一个问题。在Java中，分别有三个类用于处理字符串，而他们之间的区别也使得很多人云里雾里。本文将主要介绍一下String、StringBuffer、StringBuilder及其异同，以作备忘。</strong></p>
+</blockquote>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a><strong>String</strong></h3><p>我们首先需要明确的是，对于Java来说，String并不是一个基本数据类型，实际上它是一个对象。这也是为什么我们经常将String和数组之类的放在一起说的原因。String类是final型的，也就是说它既不能改变也不能被继承。说到这里，可能就已经有人开始迷惑了：不对啊，我每次都是直接给String赋值使其改变的。只能说被JVM骗了，实际上，每次对String对象的操作，都创建了一个新的String对象。</p>
+<a id="more"></a>
+<p>接下来我们需要讲一下String对象初始化的问题。String对象初始值为null，但在这个阶段并没有new String对象，也就是说没有创建对象的引用，也没有分配内存空间。与null相比，容易混淆的是“”与new String()。“”与new String()是等同的，他们都表示new了一个String对象，但其值为空，也就是说创建了对象的引用，分配了内存空间，只是没有赋值，或者说值就是空。</p>
+<p>Java字符串有个特殊的概念就是字符串池，这个概念我们在“JVM内存区域介绍”中提到过，简单说，就是为了提高效率，减少内存空间的占用，创建每个字符串对象时，先检查字符串池中是否存在相等的字符串，如果存在，就不再创建，直接返回字符串池中对该对象的引用，如果不存在则创建，并将其放入字符串池中，返回新建对象的引用。这也是为什么推荐字符串采用直接赋值的方式，而不是每次都new。</p>
+<p>关于字符串池，我们看个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str1 = &quot;Hello World!&quot;;</span><br><span class="line">String str2 = &quot;Hello World!&quot;;</span><br><span class="line">String str3 = new String(&quot;Hello World!&quot;);</span><br><span class="line">String str4 = new String(str1);</span><br></pre></td></tr></table></figure>
+<p>上面语句创建了四个字符串对象，执行过程中，大概会发生下面这些事儿：</p>
+<ol>
+<li>常量池中分配一个字符串空间，并由str1引用这个字符串；</li>
+<li>由str2从常量池中引用字符串；</li>
+<li>生成一个新的字符串，内部引用常量池中的字符串；</li>
+<li>生成一个新的字符串，内部引用str1。</li>
+</ol>
+<center><br><img src="/images/java_string.jpg" alt="java String对象"><br></center>
+
+<p>从图中我们可以看出，str1与str2实际上是同一个对象，而str1、str3、str4都不是相同的对象，只是都使用了相同的字符串而已，对于这三者，采用<code>equal</code>判断结果为·true<code>，而采用</code>==<code>判断结果则为</code>false`。关于String的这类问题可以参考<a href="http://www.importnew.com/18454.html" target="_blank" rel="external">初探Java字符串</a>。</p>
+<p>关于String类我们常用的操作包括字符串比较、查找、截取、替换等，具体方法可以参考API，这里不做详述。</p>
+<h3 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a><strong>StringBuffer</strong></h3><p>StringBuffer与String都可以用来存储字符串，但由于实现方式的不同，就出现了适用范围的不同。二者对比如下：</p>
+<ul>
+<li>StringBuffer不能采用赋值的方式进行初始化，它必须要实例化，也就是说必须通过构造方法进行初始化，而String则没有这方面的约束；</li>
+<li>StringBuffer在进行字符串修改时，并不会产生新的字符串对象，而String除了上面所说的常量赋值外，均会产生新的String对象；就这一点来说，StringBuffer在内存使用方面是优于String的；</li>
+<li>再就是适用范围的不同，StringBuffer更加侧重于字符串的变化，比如追加、修改、删除等。</li>
+</ul>
+<p>根据上面所说，我们建议在频繁的字符串变动时，尽量采用StringBuffer，性能会提升很大一截。</p>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a><strong>StringBuilder</strong></h3><p>StringBuilder也是可变的字符串对象，相对于StringBuffer来说，最大的不同在于StringBuilder是线程不安全的，基于这点，其速度要比StringBuffer快。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/24/Flume单机安装及测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flume单机安装及测试</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Java进击：字符串" data-title="Java进击：字符串" data-url="http://yoursite.com/2016/04/24/Java进击：字符串/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yzgithubio"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Keen Zhou
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
